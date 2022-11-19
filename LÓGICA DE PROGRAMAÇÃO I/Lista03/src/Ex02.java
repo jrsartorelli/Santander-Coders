@@ -15,13 +15,9 @@ public class Ex02 {
         String unidadeMedidaAtual;
         String unidadeMedidaFinal;
 
-        System.out.print("Digite a temperatura: ");
-        temperaturaAtual = sc.nextFloat();
-        sc.nextLine();
-        System.out.print("Digite a unidade de medida (Celsius, Kelvin ou Fahrenheit):");
-        unidadeMedidaAtual = sc.nextLine().toLowerCase();
-        System.out.print("Digite a unidade de medida para conversão (Celsius, Kelvin ou Fahrenheit):");
-        unidadeMedidaFinal = sc.nextLine().toLowerCase();
+        temperaturaAtual = leFloatUsuario(sc, "Digite a temperatura: ");
+        unidadeMedidaAtual = leStringUsuario(sc, "Digite a unidade de medida (Celsius, Kelvin ou Fahrenheit):");
+        unidadeMedidaFinal = leStringUsuario(sc, "Digite a unidade de medida para conversão (Celsius, Kelvin ou Fahrenheit):");
         sc.close();
 
         if(!unidadeMedidaAtual.equals("celsius") && !unidadeMedidaAtual.equals("kelvin") && !unidadeMedidaAtual.equals("fahrenheit") ||
@@ -30,11 +26,11 @@ public class Ex02 {
         } else if(unidadeMedidaFinal.equals(unidadeMedidaAtual)) {
             System.out.println("Opção de unidade de medida para conversão é a mesma");
         } else {
-            converterTemperatura(temperaturaAtual, unidadeMedidaAtual, unidadeMedidaFinal);
+            converteTemperatura(temperaturaAtual, unidadeMedidaAtual, unidadeMedidaFinal);
         }
     }
 
-    private static void converterTemperatura(float temperaturaAtual, String unidadeMedidaAtual, String unidadeMedidaFinal) {
+    private static void converteTemperatura(float temperaturaAtual, String unidadeMedidaAtual, String unidadeMedidaFinal) {
         float temperaturaFinal = 0;
 
         switch (unidadeMedidaFinal) {
@@ -74,5 +70,20 @@ public class Ex02 {
             default:
                 break;
         }
+    }
+
+    private static float leFloatUsuario(Scanner input, String mensagem) {
+        float valorRecebido;
+        System.out.print(mensagem);
+        valorRecebido = input.nextFloat();
+        input.nextLine();
+        return valorRecebido;
+    }
+
+    private static String leStringUsuario(Scanner input, String mensagem) {
+        String valorRecebido;
+        System.out.print(mensagem);
+        valorRecebido = input.nextLine().toLowerCase();
+        return valorRecebido;
     }
 }

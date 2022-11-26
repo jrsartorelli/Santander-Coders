@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class TwoSum {
     public static void main(String[] args) {
-        int[] numeros = {20,4,5,4};
+        int[] numeros = {3,7,2,4};
         int target = 9;
         Map<Integer, Integer> map = new HashMap<>();
 

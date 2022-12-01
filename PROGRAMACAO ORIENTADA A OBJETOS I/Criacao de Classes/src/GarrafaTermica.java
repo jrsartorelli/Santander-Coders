@@ -3,7 +3,8 @@ public class GarrafaTermica {
     private String cor;
     private double capacidadeTotal; //Capacidade em Litros
     private double capacidadeUtilizada = 0; //Capacidade em Litros
-    private double temperaturaInterna = 0; // Temperatura em graus Celsius
+    final private double TEMPERATURA_AMBIENTE = 25;
+    private double temperaturaInterna = TEMPERATURA_AMBIENTE; // Temperatura em graus Celsius
     private boolean estaAberta = false;
 
     public GarrafaTermica(String marca, String cor, double capacidadeTotal) {
@@ -56,6 +57,9 @@ public class GarrafaTermica {
             return false;
         } else if (this.capacidadeUtilizada >= litros){
             this.capacidadeUtilizada -= litros;
+            if (this.capacidadeUtilizada == 0){
+                this.temperaturaInterna = TEMPERATURA_AMBIENTE;
+            }
             return true;
         } else {
             System.out.printf("\nA garrafa possui apenas %.2f litros, portanto não é possível retirar %.2f litros!\n", this.capacidadeUtilizada, litros);

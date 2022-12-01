@@ -38,27 +38,27 @@ public class GarrafaTermica {
 
     public boolean colocarLiquido(double litros, double temperaturaLitros){
         if (!estaAberta){
-            System.out.println("A garrafa está com a tampa fechada!");
+            System.out.println("\nA garrafa está com a tampa fechada!");
             return false;
-        } else if (this.capacidadeTotal > (this.capacidadeUtilizada + litros)){
+        } else if (this.capacidadeTotal >= (this.capacidadeUtilizada + litros)){
             this.temperaturaInterna = ((this.temperaturaInterna * this.capacidadeUtilizada) + (litros * temperaturaLitros))
                     / (this.capacidadeUtilizada + litros);
             this.capacidadeUtilizada += litros;
             return true;
         } else {
-            System.out.printf("A garrafa não comporta a adição de %.2f litros!", litros);
+            System.out.printf("\nA garrafa não comporta a adição de %.2f litros!\n", litros);
             return false;
         }
     }
     public boolean retirarLiquido(double litros){
         if (!estaAberta){
-            System.out.println("A garrafa está com a tampa fechada!");
+            System.out.println("\nA garrafa está com a tampa fechada!");
             return false;
-        } else if (this.capacidadeUtilizada > litros){
+        } else if (this.capacidadeUtilizada >= litros){
             this.capacidadeUtilizada -= litros;
             return true;
         } else {
-            System.out.printf("A garrafa possui apenas %.2f litros, portanto não é possível retirar %.2f litros!", this.capacidadeUtilizada, litros);
+            System.out.printf("\nA garrafa possui apenas %.2f litros, portanto não é possível retirar %.2f litros!\n", this.capacidadeUtilizada, litros);
             return false;
         }
     }
@@ -69,7 +69,14 @@ public class GarrafaTermica {
         this.estaAberta = false;
     }
     public double medirTemperatura(){
-        return this.temperaturaInterna;
+        if (this.capacidadeUtilizada > 0){
+            return this.temperaturaInterna;
+        } else{
+            return -1;
+        }
+    }
+    public double calcularQuantidadeLiquido(){
+        return this.capacidadeUtilizada;
     }
 
     @Override
@@ -78,9 +85,9 @@ public class GarrafaTermica {
                 "marca='" + marca + '\'' +
                 ", cor='" + cor + '\'' +
                 ", capacidadeTotal=" + capacidadeTotal +
-                ", capacidadeUtilizada=" + capacidadeUtilizada +
-                ", temperaturaInterna=" + temperaturaInterna +
-                ", estaAberta=" + estaAberta +
+                "litros, capacidadeUtilizada=" + capacidadeUtilizada +
+                "litros, temperaturaInterna=" + temperaturaInterna +
+                "ºC, Tampa=" + (estaAberta ? "Aberta" : "Fechada") +
                 '}';
     }
 }

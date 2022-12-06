@@ -51,6 +51,7 @@ public class GarrafaTermica {
             return false;
         }
     }
+
     public boolean retirarLiquido(double litros){
         if (!estaAberta){
             System.out.println("\nA garrafa está com a tampa fechada!");
@@ -66,12 +67,15 @@ public class GarrafaTermica {
             return false;
         }
     }
+
     public void abrirGarrafa(){
         this.estaAberta = true;
     }
+
     public void fecharGarrafa(){
         this.estaAberta = false;
     }
+
     public double medirTemperatura(){
         if (this.capacidadeUtilizada > 0){
             return this.temperaturaInterna;
@@ -79,6 +83,7 @@ public class GarrafaTermica {
             return -1;
         }
     }
+
     public double calcularQuantidadeLiquido(){
         return this.capacidadeUtilizada;
     }
@@ -88,9 +93,9 @@ public class GarrafaTermica {
         return "GarrafaTermica{" +
                 "marca='" + marca + '\'' +
                 ", cor='" + cor + '\'' +
-                ", capacidadeTotal=" + capacidadeTotal +
-                "litros, capacidadeUtilizada=" + capacidadeUtilizada +
-                "litros, temperaturaInterna=" + temperaturaInterna +
+                ", capacidadeTotal=" + String.format("%.2f", capacidadeTotal) +
+                "litros, capacidadeUtilizada=" + String.format("%.2f", capacidadeUtilizada) +
+                "litros, temperaturaInterna=" + String.format("%.2f", temperaturaInterna) +
                 "ºC, Tampa=" + (estaAberta ? "Aberta" : "Fechada") +
                 '}';
     }

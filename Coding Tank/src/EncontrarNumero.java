@@ -19,9 +19,12 @@ public class EncontrarNumero {
                 System.out.println("Número 9 encontrado na posição " + i + " do array");
                 encontrou = true;
             }
+            System.out.println(numeros[i]);
         }
         if (!encontrou){
             System.out.println("Número não encontrado");
         }
+
+
     }
 }

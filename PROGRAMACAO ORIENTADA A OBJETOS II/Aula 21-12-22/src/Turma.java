@@ -13,10 +13,6 @@ public class Turma {
         this.professor = professor;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
-    }
-
     @Override
     public String toString() {
         return "Turma{" +

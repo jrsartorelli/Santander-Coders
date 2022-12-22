@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Turma<T extends Aluno> {
     private Professor professor;
-    private List<Aluno> alunos = new ArrayList<>();
+    private List<T> t = new ArrayList<>();
 
     public void ordenaLista(){
-        Collections.sort(alunos);
+        Collections.sort(t);
     }
 
-    public void adicionarAluno(T t){
-        alunos.add(t);
+    public void incluirAluno(T t){
+        this.t.add(t);
     }
 
     public void setProfessor(Professor professor) {
@@ -22,7 +22,7 @@ public class Turma<T extends Aluno> {
     public String toString() {
         return "Turma{" +
                 "professor=" + professor +
-                ", alunos=" + alunos +
+                ", alunos=" + t +
                 '}';
     }
 }

@@ -1,23 +1,35 @@
 public class Sistema {
-    public static void incluirAlunosTurma(Turma turma, Aluno aluno){
-        turma.adicionarAluno(aluno);
+    public static void incluirAlunosTurma(Turma<Aluno> turma, Aluno aluno){
+        turma.incluirAluno(aluno);
     }
 
     public static void main(String[] args) {
-        Turma Coders = new Turma();
-        Professor professor = new Professor("Kadu");
-        Aluno aluno1 = new Aluno("José");
-        Aluno aluno2 = new AlunoJava("Victor");
-        Aluno aluno3 = new AlunoJS("Gabriel");
+        Turma<Aluno> Java = new Turma<>();
+        Professor professorJava = new Professor("Kadu");
+        Aluno alunoJava1 = new AlunoJava("José");
+        Aluno alunoJava2 = new AlunoJava("Victor");
+        Aluno alunoJava3 = new AlunoJava("Gabriel");
 
-        Coders.setProfessor(professor);
-        Sistema.incluirAlunosTurma(Coders, aluno1);
-        Sistema.incluirAlunosTurma(Coders, aluno2);
-        Sistema.incluirAlunosTurma(Coders, aluno3);
+        Turma<Aluno> JavaScript = new Turma<>();
+        Professor professorJavaScript = new Professor("Borges");
+        Aluno alunoJS1 = new AlunoJS("Pedro");
+        Aluno alunoJS2 = new AlunoJS("Bruna");
+        Aluno alunoJS3 = new AlunoJS("Marayah");
 
-        System.out.println(Coders);
-        Coders.ordenaLista();
-        System.out.println(Coders);
+        Java.setProfessor(professorJava);
+        incluirAlunosTurma(Java, alunoJava1);
+        incluirAlunosTurma(Java, alunoJava2);
+        incluirAlunosTurma(Java, alunoJava3);
+
+        JavaScript.setProfessor(professorJavaScript);
+        incluirAlunosTurma(JavaScript, alunoJS1);
+        incluirAlunosTurma(JavaScript, alunoJS2);
+        incluirAlunosTurma(JavaScript, alunoJS3);
+
+        Java.ordenaLista();
+        JavaScript.ordenaLista();
+        System.out.println(Java);
+        System.out.println(JavaScript);
 
     }
 }

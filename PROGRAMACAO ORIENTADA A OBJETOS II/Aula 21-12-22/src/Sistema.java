@@ -16,6 +16,8 @@ public class Sistema {
         Sistema.incluirAlunosTurma(Coders, aluno3);
 
         System.out.println(Coders);
+        Coders.ordenaLista();
+        System.out.println(Coders);
 
     }
 }

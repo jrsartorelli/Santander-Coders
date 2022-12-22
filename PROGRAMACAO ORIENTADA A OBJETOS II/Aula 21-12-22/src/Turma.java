@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Turma {
+public class Turma<T extends Aluno> {
     private Professor professor;
     private List<Aluno> alunos = new ArrayList<>();
 
@@ -10,7 +10,7 @@ public class Turma {
         Collections.sort(alunos);
     }
 
-    public <T extends Aluno> void adicionarAluno(T t){
+    public void adicionarAluno(T t){
         alunos.add(t);
     }
 

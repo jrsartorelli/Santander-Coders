@@ -12,8 +12,6 @@ public abstract class Pessoa implements Comparable<Pessoa>{
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                '}';
+        return nome;
     }
 }

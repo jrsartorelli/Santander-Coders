@@ -21,8 +21,8 @@ public class Turma<T extends Aluno> {
     @Override
     public String toString() {
         return "Turma{" +
-                "professor=" + professor +
-                ", alunos=" + t +
+                professor +
+                t +
                 '}';
     }
 }

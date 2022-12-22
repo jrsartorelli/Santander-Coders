@@ -6,6 +6,6 @@ public class Professor extends Pessoa{
 
     @Override
     public String toString() {
-        return "Professor{} " + super.toString();
+        return "Professor: " + super.toString();
     }
 }

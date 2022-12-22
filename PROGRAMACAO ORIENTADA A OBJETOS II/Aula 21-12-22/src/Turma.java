@@ -5,8 +5,8 @@ public class Turma {
     private Professor professor;
     private List<Aluno> alunos = new ArrayList<>();
 
-    public void adicionarAluno(Aluno aluno){
-        alunos.add(aluno);
+    public <T extends Aluno> void adicionarAluno(T t){
+        alunos.add(t);
     }
 
     public void setProfessor(Professor professor) {
@@ -17,6 +17,13 @@ public class Turma {
         this.alunos = alunos;
     }
 
+    @Override
+    public String toString() {
+        return "Turma{" +
+                "professor=" + professor +
+                ", alunos=" + alunos +
+                '}';
+    }
 }
 
 

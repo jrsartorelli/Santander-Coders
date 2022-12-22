@@ -1,5 +1,5 @@
 public class Sistema {
-    public static void incluirAlunosTurma(Turma<Aluno> turma, Aluno aluno){
+    public static void incluirAlunoTurma(Turma<Aluno> turma, Aluno aluno){
         turma.incluirAluno(aluno);
     }
 
@@ -17,14 +17,14 @@ public class Sistema {
         Aluno alunoJS3 = new AlunoJS("Marayah");
 
         Java.setProfessor(professorJava);
-        incluirAlunosTurma(Java, alunoJava1);
-        incluirAlunosTurma(Java, alunoJava2);
-        incluirAlunosTurma(Java, alunoJava3);
+        incluirAlunoTurma(Java, alunoJava1);
+        incluirAlunoTurma(Java, alunoJava2);
+        incluirAlunoTurma(Java, alunoJava3);
 
         JavaScript.setProfessor(professorJavaScript);
-        incluirAlunosTurma(JavaScript, alunoJS1);
-        incluirAlunosTurma(JavaScript, alunoJS2);
-        incluirAlunosTurma(JavaScript, alunoJS3);
+        incluirAlunoTurma(JavaScript, alunoJS1);
+        incluirAlunoTurma(JavaScript, alunoJS2);
+        incluirAlunoTurma(JavaScript, alunoJS3);
 
         Java.ordenaLista();
         JavaScript.ordenaLista();

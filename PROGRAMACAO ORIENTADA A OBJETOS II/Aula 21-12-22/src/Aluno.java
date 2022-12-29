@@ -9,7 +9,7 @@ public class Aluno extends Pessoa implements Comparator<Aluno> {
         this.matricula = matricula;
     }
 
-    public Aluno() {   }
+    public Aluno() {}
 
     @Override
     public int compare(Aluno a1, Aluno a2) {

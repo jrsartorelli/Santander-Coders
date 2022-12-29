@@ -18,7 +18,7 @@ public class Turma<T extends Aluno> {
         this.professor = professor;
     }
 
-    public List<T> getT() {
+    public List<T> getAlunos() {
         return t;
     }
 

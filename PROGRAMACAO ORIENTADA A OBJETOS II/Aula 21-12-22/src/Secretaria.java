@@ -18,16 +18,17 @@ public class Secretaria {
     }
 
     public static void listarAlunosPorOrdemAlfabetica(Turma<Aluno> turma) {
-        List<Aluno> alunos = turma.getT();
-        Collections.sort(alunos);
-        for (Aluno aluno : alunos) {
-            System.out.println(getAlunoInfo(aluno));
-        }
+        Collections.sort(turma.getAlunos());
+        listarAlunos(turma);
     }
 
     public static void listarAlunosPorMatricula(Turma<Aluno> turma) {
-        List<Aluno> alunos = turma.getT();
-        Collections.sort(alunos, new Aluno());
+        Collections.sort(turma.getAlunos(), new Aluno());
+        listarAlunos(turma);
+    }
+
+    public static void listarAlunos(Turma<Aluno> turma){
+        List<Aluno> alunos = turma.getAlunos();
         for (Aluno aluno : alunos) {
             System.out.println(getAlunoInfo(aluno));
         }

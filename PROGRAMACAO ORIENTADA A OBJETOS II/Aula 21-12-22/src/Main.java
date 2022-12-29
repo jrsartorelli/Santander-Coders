@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -32,6 +33,21 @@ public class Main {
         pedagogicoJava.analisarEvolucaoAcademica();
         System.out.println("\nImprimindo Turma JavaScript por ordem de matrícula:");
         pedagogicoJavaScript.analisarEvolucaoAcademica();
+
+        //Outra forma de utilizar a ordenação diretamente pelo método sort da Classe List
+        System.out.println("\nImprimindo Turma Java por ordem alfabética utilizando método sort de List:");
+        turmaJava.getAlunos().sort(Comparator.comparing(Aluno::getNome));
+        Secretaria.listarAlunos(turmaJava);
+        System.out.println("\nImprimindo Turma JavaScript por ordem alfabética utilizando método sort de List:");
+        turmaJavaScript.getAlunos().sort(Comparator.comparing(Aluno::getNome));
+        Secretaria.listarAlunos(turmaJavaScript);
+        System.out.println("\nImprimindo Turma Java por ordem de matrícula utilizando método sort de List:");
+        turmaJava.getAlunos().sort(Comparator.comparing(Aluno::getMatricula));
+        Secretaria.listarAlunos(turmaJava);
+        System.out.println("\nImprimindo Turma JavaScript por ordem de matrícula utilizando método sort de List:");
+        turmaJavaScript.getAlunos().sort(Comparator.comparing(Aluno::getMatricula));
+        Secretaria.listarAlunos(turmaJavaScript);
+
 
     }
 }

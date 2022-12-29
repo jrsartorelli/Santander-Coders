@@ -1,7 +1,7 @@
 public class AlunoJava extends Aluno {
 
-    public AlunoJava(String nome) {
-        super(nome);
+    public AlunoJava(String nome, Integer matricula) {
+        super(nome, matricula);
     }
 
     @Override

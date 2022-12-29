@@ -1,4 +1,5 @@
 public class Sistema {
+
     public static void incluirAlunoTurma(Turma<Aluno> turma, Aluno aluno){
         turma.incluirAluno(aluno);
     }
@@ -6,11 +7,11 @@ public class Sistema {
     public static void main(String[] args) {
         Turma<Aluno> Java = new Turma<>();
         Professor professorJava = new Professor("Kadu");
-        Aluno[] alunosJava = new AlunoJava[]{new AlunoJava("José"), new AlunoJava("Victor"), new AlunoJava("Gabriel")};
+        Aluno[] alunosJava = new AlunoJava[]{new AlunoJava("José", 123), new AlunoJava("Victor", 456), new AlunoJava("Gabriel", 789)};
 
         Turma<Aluno> JavaScript = new Turma<>();
         Professor professorJavaScript = new Professor("Borges");
-        Aluno[] alunosJS = new AlunoJS[]{new AlunoJS("Pedro"), new AlunoJS("Bruna"), new AlunoJS("Marayah")};
+        Aluno[] alunosJS = new AlunoJS[]{new AlunoJS("Pedro", 223), new AlunoJS("Bruna", 224), new AlunoJS("Marayah", 225)};
 
         Java.setProfessor(professorJava);
         for (Aluno aluno : alunosJava) {

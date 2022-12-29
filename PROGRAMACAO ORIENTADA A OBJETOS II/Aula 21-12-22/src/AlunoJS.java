@@ -1,7 +1,7 @@
 public class AlunoJS extends Aluno{
 
-    public AlunoJS(String nome) {
-        super(nome);
+    public AlunoJS(String nome, Integer matricula) {
+        super(nome, matricula);
     }
 
     @Override

@@ -18,6 +18,10 @@ public class Turma<T extends Aluno> {
         this.professor = professor;
     }
 
+    public List<T> getT() {
+        return t;
+    }
+
     @Override
     public String toString() {
         return "Turma{" +

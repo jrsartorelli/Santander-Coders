@@ -19,20 +19,14 @@ public class Main {
         alunosJS.add(new AlunoJS("Marayah", 325));
         Turma<Aluno> turmaJavaScript = Secretaria.matricular(professorJavaScript, alunosJS);
 
-        Supervisao supervisaoJava = new Supervisao(turmaJava);
-        Supervisao supervisaoJavaScript = new Supervisao(turmaJavaScript);
-
-        Pedagogico pedagogicoJava = new Pedagogico(turmaJava);
-        Pedagogico pedagogicoJavaScript = new Pedagogico(turmaJavaScript);
-
         System.out.println("Imprimindo Turma Java por ordem alfabética:");
-        supervisaoJava.analisarFrequencia();
+        Supervisao.analisarFrequencia(turmaJava);
         System.out.println("\nImprimindo Turma JavaScript por ordem alfabética:");
-        supervisaoJavaScript.analisarFrequencia();
+        Supervisao.analisarFrequencia(turmaJavaScript);
         System.out.println("\nImprimindo Turma Java por ordem de matrícula:");
-        pedagogicoJava.analisarEvolucaoAcademica();
+        Pedagogico.analisarEvolucaoAcademica(turmaJava);
         System.out.println("\nImprimindo Turma JavaScript por ordem de matrícula:");
-        pedagogicoJavaScript.analisarEvolucaoAcademica();
+        Pedagogico.analisarEvolucaoAcademica(turmaJavaScript);
 
         //Outra forma de utilizar a ordenação diretamente pelo método sort da Classe List
         System.out.println("\nImprimindo Turma Java por ordem alfabética utilizando método sort de List:");

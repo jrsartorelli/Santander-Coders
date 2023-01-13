@@ -30,4 +30,14 @@ public abstract class Produto {
     public void incrementarQuantidade(int quantidade){
         this.quantidade += quantidade;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Produto produto = (Produto) o;
+        return nome.equals(produto.nome);
+    }
 }

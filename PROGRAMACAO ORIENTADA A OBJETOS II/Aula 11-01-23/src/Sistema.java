@@ -10,5 +10,9 @@ public class Sistema {
         livraria.adicionarProduto(produto);
         livraria.adicionarProduto(filme);
 
+        Produto produto2 = new Livro("Java", 100, 3,
+                new String[]{"Programação", "TI"}, "Escritor", "Editora");
+        livraria.adicionarProduto(produto2);
+
     }
 }

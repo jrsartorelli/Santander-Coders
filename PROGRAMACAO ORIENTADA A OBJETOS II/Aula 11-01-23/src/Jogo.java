@@ -1,42 +1,15 @@
-public class Jogo {
-    private String nome;
-    private int id;
-    private double preco;
+public class Jogo extends Produto{
     private String distribuidora;
     private String genero;
     private String estudioDesenvolvedor;
 
-    public Jogo(String nome, int id, double preco, String distribuidora, String genero, String estudioDesenvolvedor) {
-        this.nome = nome;
-        this.id = id;
-        this.preco = preco;
+    public Jogo(String nome, double preco, int quantidade, String distribuidora, String genero, String estudioDesenvolvedor) {
+        this.setNome(nome);
+        this.setPreco(preco);
+        this.setQuantidade(quantidade);
         this.distribuidora = distribuidora;
         this.genero = genero;
         this.estudioDesenvolvedor = estudioDesenvolvedor;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
     public String getDistribuidora() {

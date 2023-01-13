@@ -1,44 +1,17 @@
-public class Filme {
-    private String nome;
-    private int id;
-    private double preco;
+public class Filme extends Produto{
     private String estudio;
     private String[] diretores;
     private String[] generos;
     private String[] produtores;
 
-    public Filme(String nome, int id, double preco, String estudio, String[] diretores, String[] generos, String[] produtores) {
-        this.nome = nome;
-        this.id = id;
-        this.preco = preco;
+    public Filme(String nome, double preco, int quantidade, String estudio, String[] diretores, String[] generos, String[] produtores) {
+        this.setNome(nome);
+        this.setPreco(preco);
+        this.setQuantidade(quantidade);
         this.estudio = estudio;
         this.diretores = diretores;
         this.generos = generos;
         this.produtores = produtores;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
     public String getEstudio() {

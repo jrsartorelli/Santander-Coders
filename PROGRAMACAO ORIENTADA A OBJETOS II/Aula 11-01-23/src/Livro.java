@@ -1,42 +1,15 @@
-public class Livro {
-    private String nome;
-    private int id;
-    private double preco;
+public class Livro extends Produto {
     private String[] generos;
     private String escritor;
     private String editora;
 
-    public Livro(String nome, int id, double preco, String[] generos, String escritor, String editora) {
-        this.nome = nome;
-        this.id = id;
-        this.preco = preco;
+    public Livro(String nome, double preco, int quantidade, String[] generos, String escritor, String editora) {
+        this.setNome(nome);
+        this.setPreco(preco);
+        this.setQuantidade(quantidade);
         this.generos = generos;
         this.escritor = escritor;
         this.editora = editora;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
     public String[] getGeneros() {

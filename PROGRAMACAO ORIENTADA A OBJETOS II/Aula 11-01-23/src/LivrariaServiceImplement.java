@@ -18,30 +18,30 @@ public class LivrariaServiceImplement implements LivrariaService {
         this.estoques.add(estoqueAlbunsMusica);
     }
 
-    @Override
-    public void adicionarProduto(Livro livro) {
-        estoqueLivros.adicionarProduto(livro);
-    }
-
-    @Override
-    public void adicionarProduto(Jogo jogo) {
-        estoqueJogos.adicionarProduto(jogo);
-    }
-
-    @Override
-    public void adicionarProduto(Brinquedo brinquedo) {
-        estoqueBrinquedos.adicionarProduto(brinquedo);
-    }
-
-    @Override
-    public void adicionarProduto(Filme filme) {
-        estoqueFilmes.adicionarProduto(filme);
-    }
-
-    @Override
-    public void adicionarProduto(AlbumMusica albumMusica) {
-        estoqueAlbunsMusica.adicionarProduto(albumMusica);
-    }
+//    @Override
+//    public void adicionarProduto(Livro livro) {
+//        estoqueLivros.adicionarProduto(livro);
+//    }
+//
+//    @Override
+//    public void adicionarProduto(Jogo jogo) {
+//        estoqueJogos.adicionarProduto(jogo);
+//    }
+//
+//    @Override
+//    public void adicionarProduto(Brinquedo brinquedo) {
+//        estoqueBrinquedos.adicionarProduto(brinquedo);
+//    }
+//
+//    @Override
+//    public void adicionarProduto(Filme filme) {
+//        estoqueFilmes.adicionarProduto(filme);
+//    }
+//
+//    @Override
+//    public void adicionarProduto(AlbumMusica albumMusica) {
+//        estoqueAlbunsMusica.adicionarProduto(albumMusica);
+//    }
 
     @Override
     public void adicionarProduto(Produto produto) {

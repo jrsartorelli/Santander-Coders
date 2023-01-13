@@ -27,7 +27,7 @@ public abstract class Produto {
         this.quantidade = quantidade;
     }
 
-    public void incrementarQuantidade(){
-        this.quantidade++;
+    public void incrementarQuantidade(int quantidade){
+        this.quantidade += quantidade;
     }
 }

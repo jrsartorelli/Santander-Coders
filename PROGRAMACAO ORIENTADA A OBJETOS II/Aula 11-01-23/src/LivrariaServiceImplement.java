@@ -105,9 +105,69 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public void listarItensEstoques() {
+    public void listarItensEstoque() {
         for (Estoque estoque : estoques) {
             System.out.println(estoque);
         }
+    }
+
+    @Override
+    public void listarItensEstoque(Class categoria) {
+        for (Estoque estoque : estoques) {
+            if (estoque.getTipoProduto().equals(categoria)){
+                System.out.println(estoque);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public double venderProduto(Integer id) {
+        Produto produto = buscarProduto(id);
+        if(decrementarEstoque(produto, 1)) {
+            return produto.getPreco();
+        }
+        return 0;
+    }
+
+    @Override
+    public double venderProduto(String nome) {
+        Produto produto = buscarProduto(nome);
+        if(decrementarEstoque(produto, 1)) {
+            return produto.getPreco();
+        }
+        return 0;
+    }
+
+    @Override
+    public double venderProduto(Integer id, int quantidade) {
+        Produto produto = buscarProduto(id);
+        if(decrementarEstoque(produto, quantidade)) {
+            return produto.getPreco() * quantidade;
+        }
+        return 0;
+    }
+
+    @Override
+    public double venderProduto(String nome, int quantidade) {
+        Produto produto = buscarProduto(nome);
+        if(decrementarEstoque(produto, quantidade)) {
+            return produto.getPreco() * quantidade;
+        }
+        return 0;
+    }
+
+    private boolean decrementarEstoque(Produto produto, int quantidade){
+        if (produto != null) {
+            if (produto.decrementarQuantidade(quantidade)){
+                return true;
+            } else {
+                System.err.println("Não há quantidade em estoque");
+            }
+        } else {
+            System.err.println("Produto não encontrado");
+            return false;
+        }
+        return false;
     }
 }

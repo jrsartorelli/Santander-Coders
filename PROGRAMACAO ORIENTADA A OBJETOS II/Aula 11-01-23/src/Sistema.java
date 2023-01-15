@@ -2,6 +2,7 @@ public class Sistema {
     public static void main(String[] args) {
 
         LivrariaService livraria = new LivrariaServiceImplement();
+        Caixa caixa = new Caixa();
 
         Produto livro1 = new Livro("O Senhor dos Anéis", 1, 49.99, 10,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes");
@@ -52,7 +53,18 @@ public class Sistema {
         System.out.println(livraria.buscarQuantidadeItens(Livro.class) + " livros");
 
         //Listar itens de todos os Estoques
-        livraria.listarItensEstoques();
+        System.out.println("\nListando todo o estoque:");
+        livraria.listarItensEstoque();
+
+        //Listar itens por categoria
+        System.out.println("\nListando o estoque por categoria: " + Filme.class.getName());
+        livraria.listarItensEstoque(Filme.class);
+
+        //Comprar um produto: o produto comprado dever ter a quantidade decrementada
+        caixa.adicionarDinheiro(livraria.venderProduto("O Senhor dos Anéis", 10));
+        System.out.println("\nValor em caixa: R$" + caixa.getDinheiro());
+
+        System.out.println(livraria.buscarProduto("O Senhor dos Anéis"));
 
     }
 }

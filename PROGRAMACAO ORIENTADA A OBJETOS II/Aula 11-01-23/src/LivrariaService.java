@@ -11,7 +11,13 @@ public interface LivrariaService <T extends Produto>{
 
     public int buscarQuantidadeItens(Class tipoProduto);
 
-    public void listarItensEstoques();
+    public void listarItensEstoque();
+    public void listarItensEstoque(Class categoria);
+
+    public double venderProduto(Integer id);
+    public double venderProduto(String nome);
+    public double venderProduto(Integer id, int quantidade);
+    public double venderProduto(String nome, int quantidade);
 
 
 }

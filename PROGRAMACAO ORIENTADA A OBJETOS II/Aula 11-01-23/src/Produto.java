@@ -40,6 +40,14 @@ public abstract class Produto {
         this.quantidade += quantidade;
     }
 
+    public boolean decrementarQuantidade(int quantidade){
+        if(this.quantidade >= quantidade){
+            this.quantidade -= quantidade;
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

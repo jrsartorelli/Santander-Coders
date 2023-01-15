@@ -19,5 +19,4 @@ public interface LivrariaService <T extends Produto>{
     public double venderProduto(Integer id, int quantidade);
     public double venderProduto(String nome, int quantidade);
 
-
 }

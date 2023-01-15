@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Filme extends Produto{
     private String estudio;
     private String[] diretores;
@@ -45,5 +47,15 @@ public class Filme extends Produto{
 
     public void setProdutores(String[] produtores) {
         this.produtores = produtores;
+    }
+
+    @Override
+    public String toString() {
+        return "Filme{" + super.toString() +
+                ", estudio='" + estudio + '\'' +
+                ", diretores=" + Arrays.toString(diretores) +
+                ", generos=" + Arrays.toString(generos) +
+                ", produtores=" + Arrays.toString(produtores) +
+                '}';
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class AlbumMusica extends Produto{
     private String[] musicos;
     private String[] generos;
@@ -35,5 +37,14 @@ public class AlbumMusica extends Produto{
 
     public void setSelos(String[] selos) {
         this.selos = selos;
+    }
+
+    @Override
+    public String toString() {
+        return "AlbumMusica{" + super.toString() +
+                ", musicos=" + Arrays.toString(musicos) +
+                ", generos=" + Arrays.toString(generos) +
+                ", selos=" + Arrays.toString(selos) +
+                '}';
     }
 }

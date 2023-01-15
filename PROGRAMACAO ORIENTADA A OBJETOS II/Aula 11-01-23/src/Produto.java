@@ -49,4 +49,12 @@ public abstract class Produto {
         Produto produto = (Produto) o;
         return (id.equals(produto.id) && nome.equals(produto.nome));
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade;
+    }
 }

@@ -18,31 +18,6 @@ public class LivrariaServiceImplement implements LivrariaService {
         this.estoques.add(estoqueAlbunsMusica);
     }
 
-//    @Override
-//    public void adicionarProduto(Livro livro) {
-//        estoqueLivros.adicionarProduto(livro);
-//    }
-//
-//    @Override
-//    public void adicionarProduto(Jogo jogo) {
-//        estoqueJogos.adicionarProduto(jogo);
-//    }
-//
-//    @Override
-//    public void adicionarProduto(Brinquedo brinquedo) {
-//        estoqueBrinquedos.adicionarProduto(brinquedo);
-//    }
-//
-//    @Override
-//    public void adicionarProduto(Filme filme) {
-//        estoqueFilmes.adicionarProduto(filme);
-//    }
-//
-//    @Override
-//    public void adicionarProduto(AlbumMusica albumMusica) {
-//        estoqueAlbunsMusica.adicionarProduto(albumMusica);
-//    }
-
     @Override
     public void adicionarProduto(Produto produto) {
         for (Estoque estoque : estoques) {
@@ -64,5 +39,57 @@ public class LivrariaServiceImplement implements LivrariaService {
             }
         }
         System.err.println("Tipo do produto não identificado, nenhum produto foi adicionado");
+    }
+
+    @Override
+    public Produto buscarProduto(Integer id) {
+        for (Estoque estoque : estoques) {
+            Produto produto = estoque.buscarProduto(id);
+            if (produto != null) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Produto buscarProduto(String nome) {
+        for (Estoque estoque : estoques) {
+            Produto produto = estoque.buscarProduto(nome);
+            if (produto != null) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void removerProduto(Integer id) {
+        for (Estoque estoque : estoques) {
+            if (estoque.removerProduto(id)) {
+                return;
+            }
+        }
+        System.err.println("Produto não encontrado para remoção!");
+    }
+
+    @Override
+    public void removerProduto(String nome) {
+        for (Estoque estoque : estoques) {
+            if (estoque.removerProduto(nome)) {
+                return;
+            }
+        }
+        System.err.println("Produto não encontrado para remoção!");
+    }
+
+    @Override
+    public void removerProduto(Produto produto) {
+        for (Estoque estoque : estoques) {
+            if (estoque.getProdutos().remove(produto)) {
+                return;
+            }
+        }
+        System.err.println("Produto não encontrado para remoção!");
     }
 }

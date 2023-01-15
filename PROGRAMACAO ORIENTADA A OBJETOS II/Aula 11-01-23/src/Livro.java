@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Livro extends Produto {
     private String[] generos;
     private String escritor;
@@ -35,5 +37,14 @@ public class Livro extends Produto {
 
     public void setEditora(String editora) {
         this.editora = editora;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" + super.toString() +
+                ", generos=" + Arrays.toString(generos) +
+                ", escritor='" + escritor + '\'' +
+                ", editora='" + editora + '\'' +
+                "} ";
     }
 }

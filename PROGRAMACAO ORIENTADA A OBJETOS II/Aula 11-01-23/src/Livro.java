@@ -3,8 +3,9 @@ public class Livro extends Produto {
     private String escritor;
     private String editora;
 
-    public Livro(String nome, double preco, int quantidade, String[] generos, String escritor, String editora) {
+    public Livro(String nome, Integer id, double preco, int quantidade, String[] generos, String escritor, String editora) {
         this.setNome(nome);
+        this.setId(id);
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.generos = generos;

@@ -1,7 +1,16 @@
 public abstract class Produto {
+    private Integer id;
     private String nome;
     private double preco;
     private int quantidade;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -38,6 +47,6 @@ public abstract class Produto {
             return false;
         }
         Produto produto = (Produto) o;
-        return nome.equals(produto.nome);
+        return (id.equals(produto.id) && nome.equals(produto.nome));
     }
 }

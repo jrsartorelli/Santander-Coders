@@ -1,8 +1,9 @@
 public class Brinquedo extends Produto{
     private String tipo;
 
-    public Brinquedo(String nome, double preco, int quantidade, String tipo) {
+    public Brinquedo(String nome, Integer id, double preco, int quantidade, String tipo) {
         this.setNome(nome);
+        this.setId(id);
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.tipo = tipo;

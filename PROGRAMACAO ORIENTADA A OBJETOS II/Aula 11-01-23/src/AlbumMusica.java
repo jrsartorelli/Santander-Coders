@@ -3,8 +3,9 @@ public class AlbumMusica extends Produto{
     private String[] generos;
     private String[] selos;
 
-    public AlbumMusica(String nome, double preco, int quantidade, String[] musicos, String[] generos, String[] selos) {
+    public AlbumMusica(String nome, Integer id, double preco, int quantidade, String[] musicos, String[] generos, String[] selos) {
         this.setNome(nome);
+        this.setId(id);
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.musicos = musicos;

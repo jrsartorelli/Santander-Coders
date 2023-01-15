@@ -1,16 +1,16 @@
 public class Jogo extends Produto{
     private String distribuidora;
     private String genero;
-    private String estudioDesenvolvedor;
+    private String estudio;
 
-    public Jogo(String nome, Integer id, double preco, int quantidade, String distribuidora, String genero, String estudioDesenvolvedor) {
+    public Jogo(String nome, Integer id, double preco, int quantidade, String distribuidora, String genero, String estudio) {
         this.setNome(nome);
         this.setId(id);
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.distribuidora = distribuidora;
         this.genero = genero;
-        this.estudioDesenvolvedor = estudioDesenvolvedor;
+        this.estudio = estudio;
     }
 
     public String getDistribuidora() {
@@ -29,11 +29,11 @@ public class Jogo extends Produto{
         this.genero = genero;
     }
 
-    public String getEstudioDesenvolvedor() {
-        return estudioDesenvolvedor;
+    public String getEstudio() {
+        return estudio;
     }
 
-    public void setEstudioDesenvolvedor(String estudioDesenvolvedor) {
-        this.estudioDesenvolvedor = estudioDesenvolvedor;
+    public void setEstudio(String estudio) {
+        this.estudio = estudio;
     }
 }

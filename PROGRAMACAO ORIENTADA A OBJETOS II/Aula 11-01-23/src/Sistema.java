@@ -48,5 +48,11 @@ public class Sistema {
             System.out.println(produto);
         }
 
+        //Quantidade de itens de um determinado tipo de Produto
+        System.out.println(livraria.buscarQuantidadeItens(Livro.class) + " livros");
+
+        //Listar itens de todos os Estoques
+        livraria.listarItensEstoques();
+
     }
 }

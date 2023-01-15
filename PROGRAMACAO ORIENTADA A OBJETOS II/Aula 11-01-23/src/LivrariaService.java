@@ -9,5 +9,9 @@ public interface LivrariaService <T extends Produto>{
     public void removerProduto(String nome);
     public void removerProduto(T t);
 
+    public int buscarQuantidadeItens(Class tipoProduto);
+
+    public void listarItensEstoques();
+
 
 }

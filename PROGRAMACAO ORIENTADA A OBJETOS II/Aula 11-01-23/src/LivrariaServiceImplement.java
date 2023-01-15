@@ -92,4 +92,22 @@ public class LivrariaServiceImplement implements LivrariaService {
         }
         System.err.println("Produto não encontrado para remoção!");
     }
+
+    @Override
+    public int buscarQuantidadeItens(Class tipoProduto) {
+        for (Estoque estoque : estoques) {
+            if (estoque.getTipoProduto().equals(tipoProduto)) {
+                return estoque.getProdutos().size();
+            }
+        }
+        System.err.println("Tipo do produto não identificado, nenhum produto foi adicionado");
+        return 0;
+    }
+
+    @Override
+    public void listarItensEstoques() {
+        for (Estoque estoque : estoques) {
+            System.out.println(estoque);
+        }
+    }
 }

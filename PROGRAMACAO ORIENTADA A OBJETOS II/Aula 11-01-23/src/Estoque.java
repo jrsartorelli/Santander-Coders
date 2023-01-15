@@ -63,4 +63,10 @@ class Estoque <T extends Produto>{
     public Class getTipoProduto() {
         return tipoProduto;
     }
+
+    @Override
+    public String toString() {
+        return "Estoque " + tipoProduto.getName() +
+                " = " + produtos;
+    }
 }

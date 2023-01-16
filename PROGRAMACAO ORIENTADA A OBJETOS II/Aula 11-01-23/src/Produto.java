@@ -3,14 +3,11 @@ public abstract class Produto {
     private String nome;
     private double preco;
     private int quantidade;
+    private boolean publicoAdulto;
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Integer id) { this.id = id; }
 
     public String getNome() {
         return nome;
@@ -34,6 +31,14 @@ public abstract class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public boolean isPublicoAdulto() {
+        return publicoAdulto;
+    }
+
+    public void setPublicoAdulto(boolean publicoAdulto) {
+        this.publicoAdulto = publicoAdulto;
     }
 
     public void incrementarQuantidade(int quantidade){
@@ -63,6 +68,7 @@ public abstract class Produto {
         return "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", preco=" + preco +
-                ", quantidade=" + quantidade;
+                ", quantidade=" + quantidade +
+                ", público adulto=" + (publicoAdulto?"sim":"não");
     }
 }

@@ -3,16 +3,17 @@ public class Sistema {
 
         LivrariaService livraria = new LivrariaServiceImplement();
         Caixa caixa = new Caixa();
+        Comprador comprador = new Comprador("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
 
-        Produto livro1 = new Livro("O Senhor dos Anéis", 1, 49.99, 10,
+        Produto livro1 = new Livro("O Senhor dos Anéis", 1, 49.99, 10, true,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes");
-        Produto livro2 = new Livro("Harry Potter e a Pedra Filosofal", 2,39.99, 15,
+        Produto livro2 = new Livro("Harry Potter e a Pedra Filosofal", 2,39.99, 15, false,
                 new String[]{"Fantasia", "Aventura"}, "J.K. Rowling", "Editora Rocco");
-        Produto livro3 = new Livro("A Menina que Roubava Livros", 3, 29.99, 5,
+        Produto livro3 = new Livro("A Menina que Roubava Livros", 3, 29.99, 5, false,
                 new String[]{"Ficção", "Drama"}, "Markus Zusak", "Editora Intrínseca");
-        Produto filme1 = new Filme("Star Wars: Episódio IV - Uma Nova Esperança", 10, 19.99, 20, "Lucasfilm",
+        Produto filme1 = new Filme("Star Wars: Episódio IV - Uma Nova Esperança", 10, 19.99, 20,  false,"Lucasfilm",
                 new String[] {"George Lucas"}, new String[]{"Ficção Científica", "Aventura"} , new String[]{"Gary Kurtz"});
-        Produto filme2 = new Filme("The Shawshank Redemption", 11, 14.99, 15, "Castle Rock Entertainment",
+        Produto filme2 = new Filme("The Shawshank Redemption", 11, 14.99, 15,  false,"Castle Rock Entertainment",
                 new String[] {"Frank Darabont"}, new String[]{"Drama", "Crime"} , new String[]{"Niki Marvin"});
 
         livraria.adicionarProduto(livro1);
@@ -27,7 +28,7 @@ public class Sistema {
         //Criando nova instância para Livro1 com preço diferente
         //Vai incrementar quantidade, mas não irá alterar o valor
         //Condição para igualdade na comparação -> id e nome
-        livro1 = new Livro("O Senhor dos Anéis", 1, 70, 10,
+        livro1 = new Livro("O Senhor dos Anéis", 1, 70, 10, false,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes");
 
         livraria.adicionarProduto(livro1);
@@ -61,7 +62,8 @@ public class Sistema {
         livraria.listarItensEstoque(Filme.class);
 
         //Comprar um produto: o produto comprado dever ter a quantidade decrementada
-        caixa.adicionarDinheiro(livraria.venderProduto("O Senhor dos Anéis", 10));
+        boolean maiorIdade = comprador.verificarMaiorDeIdade();
+        caixa.adicionarDinheiro(livraria.venderProduto("O Senhor dos Anéis", 10, maiorIdade));
         System.out.println("\nValor em caixa: R$" + caixa.getDinheiro());
 
         System.out.println(livraria.buscarProduto("O Senhor dos Anéis"));

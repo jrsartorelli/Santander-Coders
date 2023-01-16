@@ -122,36 +122,48 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public double venderProduto(Integer id) {
+    public double venderProduto(Integer id, boolean maiorIdade) {
         Produto produto = buscarProduto(id);
-        if(decrementarEstoque(produto, 1)) {
+        if (produto.isPublicoAdulto() && !maiorIdade) {
+            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
+        }
+        else if(decrementarEstoque(produto, 1)) {
             return produto.getPreco();
         }
         return 0;
     }
 
     @Override
-    public double venderProduto(String nome) {
+    public double venderProduto(String nome, boolean maiorIdade) {
         Produto produto = buscarProduto(nome);
-        if(decrementarEstoque(produto, 1)) {
+        if (produto.isPublicoAdulto() && !maiorIdade) {
+            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
+        }
+        else if(decrementarEstoque(produto, 1)) {
             return produto.getPreco();
         }
         return 0;
     }
 
     @Override
-    public double venderProduto(Integer id, int quantidade) {
+    public double venderProduto(Integer id, int quantidade, boolean maiorIdade) {
         Produto produto = buscarProduto(id);
-        if(decrementarEstoque(produto, quantidade)) {
+        if (produto.isPublicoAdulto() && !maiorIdade) {
+            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
+        }
+        else if(decrementarEstoque(produto, quantidade)) {
             return produto.getPreco() * quantidade;
         }
         return 0;
     }
 
     @Override
-    public double venderProduto(String nome, int quantidade) {
+    public double venderProduto(String nome, int quantidade, boolean maiorIdade) {
         Produto produto = buscarProduto(nome);
-        if(decrementarEstoque(produto, quantidade)) {
+        if (produto.isPublicoAdulto() && !maiorIdade) {
+            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
+        }
+        else if(decrementarEstoque(produto, quantidade)) {
             return produto.getPreco() * quantidade;
         }
         return 0;

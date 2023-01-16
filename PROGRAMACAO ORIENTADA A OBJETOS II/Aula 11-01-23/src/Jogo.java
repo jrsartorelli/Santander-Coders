@@ -3,11 +3,12 @@ public class Jogo extends Produto{
     private String genero;
     private String estudio;
 
-    public Jogo(String nome, Integer id, double preco, int quantidade, String distribuidora, String genero, String estudio) {
+    public Jogo(String nome, Integer id, double preco, int quantidade, boolean publicoAdulto, String distribuidora, String genero, String estudio) {
         this.setNome(nome);
         this.setId(id);
         this.setPreco(preco);
         this.setQuantidade(quantidade);
+        this.setPublicoAdulto(publicoAdulto);
         this.distribuidora = distribuidora;
         this.genero = genero;
         this.estudio = estudio;

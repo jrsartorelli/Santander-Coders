@@ -101,7 +101,7 @@ public class Sistema {
         double dinheiroRecebido = livraria.venderProduto(nomeProduto, quantidadeVenda, comprador);
         System.out.printf("Dinheiro recebido da venda = R$%.2f\n", dinheiroRecebido);
         caixa.adicionarDinheiro(dinheiroRecebido);
-        System.out.println(String.format("\nValor em caixa = R$%.2f", caixa.getDinheiro()));
+        System.out.printf("\nValor em caixa = R$%.2f%n\n", caixa.getDinheiro());
 
         System.out.println(livraria.buscarProduto("O Senhor dos Anéis"));
 

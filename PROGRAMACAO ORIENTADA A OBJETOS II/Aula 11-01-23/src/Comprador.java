@@ -48,7 +48,7 @@ public class Comprador {
         this.dataNascimento = dataNascimento;
     }
 
-    public boolean verificarMaiorDeIdade(){
+    public boolean isMaiorDeIdade(){
         LocalDate dataAtual = LocalDate.now();
         Period idade = Period.between(dataNascimento, dataAtual);
         return idade.getYears() >= 18;

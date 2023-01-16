@@ -67,7 +67,7 @@ public abstract class Produto {
     public String toString() {
         return "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", preco=" + preco +
+                ", preco=" + String.format("R$%.2f", preco) +
                 ", quantidade=" + quantidade +
                 ", público adulto=" + (publicoAdulto?"sim":"não");
     }

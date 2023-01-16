@@ -3,6 +3,8 @@ import java.util.List;
 
 public class LivrariaServiceImplement implements LivrariaService {
     private List<Estoque> estoques = new ArrayList<>();
+    final double VALOR_TOTAL_LIVROS_APLICAR_DESCONTO = 200;
+    final double PERCENTAGEM_DESCONTO = 0.15;
 
     private Estoque<Livro> estoqueLivros = new Estoque<>(Livro.class);
     private Estoque<Jogo> estoqueJogos = new Estoque<>(Jogo.class);
@@ -100,7 +102,7 @@ public class LivrariaServiceImplement implements LivrariaService {
                 return estoque.getProdutos().size();
             }
         }
-        System.err.println("Tipo do produto não identificado, nenhum produto foi adicionado");
+        System.err.println("Tipo do produto não identificado");
         return 0;
     }
 
@@ -122,49 +124,42 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public double venderProduto(Integer id, boolean maiorIdade) {
+    public double venderProduto(Integer id, Comprador comprador) {
         Produto produto = buscarProduto(id);
-        if (produto.isPublicoAdulto() && !maiorIdade) {
-            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
-        }
-        else if(decrementarEstoque(produto, 1)) {
-            return produto.getPreco();
-        }
-        return 0;
+        return venderProduto(produto, 1, comprador);
     }
 
     @Override
-    public double venderProduto(String nome, boolean maiorIdade) {
+    public double venderProduto(String nome, Comprador comprador) {
         Produto produto = buscarProduto(nome);
-        if (produto.isPublicoAdulto() && !maiorIdade) {
-            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
-        }
-        else if(decrementarEstoque(produto, 1)) {
-            return produto.getPreco();
-        }
-        return 0;
+        return venderProduto(produto, 1, comprador);
     }
 
     @Override
-    public double venderProduto(Integer id, int quantidade, boolean maiorIdade) {
+    public double venderProduto(Integer id, int quantidade, Comprador comprador) {
         Produto produto = buscarProduto(id);
-        if (produto.isPublicoAdulto() && !maiorIdade) {
+        return venderProduto(produto, quantidade, comprador);
+    }
+
+    @Override
+    public double venderProduto(String nome, int quantidade, Comprador comprador) {
+        Produto produto = buscarProduto(nome);
+        return venderProduto(produto, quantidade, comprador);
+    }
+
+    private double venderProduto(Produto produto, int quantidade, Comprador comprador){
+        if (produto.isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
             System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
         }
         else if(decrementarEstoque(produto, quantidade)) {
-            return produto.getPreco() * quantidade;
-        }
-        return 0;
-    }
-
-    @Override
-    public double venderProduto(String nome, int quantidade, boolean maiorIdade) {
-        Produto produto = buscarProduto(nome);
-        if (produto.isPublicoAdulto() && !maiorIdade) {
-            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
-        }
-        else if(decrementarEstoque(produto, quantidade)) {
-            return produto.getPreco() * quantidade;
+            double valorTotal = produto.getPreco() * quantidade;
+            if(produto instanceof Livro && valorTotal >= VALOR_TOTAL_LIVROS_APLICAR_DESCONTO){
+                double valorDesconto = valorTotal * PERCENTAGEM_DESCONTO;
+                System.out.printf("Desconto de R$%.2f aplicado ao total de R$%.2f, ", valorDesconto, valorTotal);
+                valorTotal -= valorDesconto; // Desconto na categoria Livros
+                System.out.printf("valor final a ser pago = R$%.2f\n", valorTotal);
+            }
+            return valorTotal;
         }
         return 0;
     }
@@ -174,7 +169,7 @@ public class LivrariaServiceImplement implements LivrariaService {
             if (produto.decrementarQuantidade(quantidade)){
                 return true;
             } else {
-                System.err.println("Não há quantidade em estoque");
+                System.err.println("Não há quantidade suficiente em estoque");
             }
         } else {
             System.err.println("Produto não encontrado");

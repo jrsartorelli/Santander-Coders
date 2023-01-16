@@ -3,7 +3,7 @@ public class Sistema {
 
         LivrariaService livraria = new LivrariaServiceImplement();
         Caixa caixa = new Caixa();
-        Comprador comprador = new Comprador("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2005");
+        Comprador comprador = new Comprador("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
 
         Produto livro1 = new Livro("O Senhor dos Anéis", 1, 49.99, 10, true,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes");
@@ -19,13 +19,13 @@ public class Sistema {
                 "Sony", "Ação-Aventura", "Santa Monica Studio");
         Produto jogo2 = new Jogo("The Last of Us Part II", 21, 259.99, 15, true,
                 "Sony", "Ação-Aventura", "Naughty Dog");
-        Brinquedo brinquedo1 = new Brinquedo("Boneca Barbie", 30, 49.99, 20, false, "Bonecas");
-        Brinquedo brinquedo2 = new Brinquedo("Carrinho Hot Wheels", 31, 29.99, 15, false, "Veículos");
-        AlbumMusica album1 = new AlbumMusica("Album 1", 1, 19.99, 10, false,
+        Produto brinquedo1 = new Brinquedo("Boneca Barbie", 30, 49.99, 20, false, "Bonecas");
+        Produto brinquedo2 = new Brinquedo("Carrinho Hot Wheels", 31, 29.99, 15, false, "Veículos");
+        Produto album1 = new AlbumMusica("Album 1", 1, 19.99, 10, false,
                 new String[]{"Músico 1", "Músico 2"}, new String[]{"Rock", "Pop"}, new String[]{"Selo 1", "Selo 2"});
-        AlbumMusica album2 = new AlbumMusica("Album 2", 2, 29.99, 15, true,
+        Produto album2 = new AlbumMusica("Album 2", 2, 29.99, 15, true,
                 new String[]{"Músico 3", "Músico 4", "Músico 5"}, new String[]{"Jazz", "Blues"}, new String[]{"Selo 3"});
-        AlbumMusica album3 = new AlbumMusica("Album 3", 3, 24.99, 20, false,
+        Produto album3 = new AlbumMusica("Album 3", 3, 24.99, 20, false,
                 new String[]{"Músico 6", "Músico 7", "Músico 8", "Músico 9"}, new String[]{"Funk", "R&B"}, new String[]{"Selo 4", "Selo 5"});
 
         livraria.adicionarProduto(livro1);

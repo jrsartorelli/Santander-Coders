@@ -71,8 +71,9 @@ public class Sistema {
         }
         System.out.println(livraria.buscarProduto(nomeProduto, TipoProduto.BRINQUEDO));
 
-        //Remove produto por nome
+        //Remove produto por nome ou id
         nomeProduto = "A Menina que Roubava Livros";
+        idProduto = 3;
         System.out.println("\nRemover produto com nome: " + nomeProduto);
         if (livraria.removerProduto(nomeProduto)) {
             System.out.println("Produto com nome \"" + nomeProduto + "\" removido do estoque");

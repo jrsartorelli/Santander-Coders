@@ -58,13 +58,13 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public void removerProduto(Integer id) {
+    public boolean removerProduto(Integer id) {
         for (Estoque estoque : estoques.values()) {
             if (estoque.removerProduto(id)) {
-                return;
+                return true;
             }
         }
-        System.err.println("Produto não encontrado para remoção!");
+        return false;
     }
 
     @Override
@@ -77,16 +77,16 @@ public class LivrariaServiceImplement implements LivrariaService {
         return false;
     }
 
-//    @Override
-//    public void removerProduto(Produto produto) {
-//        for (Estoque estoque : estoques) {
-//            if (estoque.getProdutos().remove(produto)) {
-//                return;
-//            }
-//        }
-//        System.err.println("Produto não encontrado para remoção!");
-//    }
-//
+    @Override
+    public void removerProduto(Produto produto) {
+        for (Estoque estoque : estoques.values()) {
+            if (estoque.getProdutos().remove(produto)) {
+                return;
+            }
+        }
+        System.err.println("Produto não encontrado para remoção!");
+    }
+
 ////    @Override
 ////    public int buscarQuantidadeItens(Class tipoProduto) {
 ////        for (Estoque estoque : estoques) {

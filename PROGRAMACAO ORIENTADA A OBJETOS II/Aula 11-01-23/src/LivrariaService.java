@@ -8,10 +8,10 @@ public interface LivrariaService <T extends Produto>{
     public T buscarProduto(String nome, TipoProduto tipoProduto);
 
 
-    public void removerProduto(Integer id);
+    public boolean removerProduto(Integer id);
     public boolean removerProduto(String nome);
-//    public void removerProduto(T t);
-//
+    public void removerProduto(T t);
+
 ////    public int buscarQuantidadeItens(Class tipoProduto);
 //
 //    public void listarItensEstoque();

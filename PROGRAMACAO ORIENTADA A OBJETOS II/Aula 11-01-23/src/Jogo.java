@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Map;
+
 public class Jogo extends Produto{
     private String distribuidora;
     private String genero;
@@ -36,6 +39,16 @@ public class Jogo extends Produto{
 
     public void setEstudio(String estudio) {
         this.estudio = estudio;
+    }
+
+    @Override
+    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
+        Estoque<Jogo> jogoEstoque = estoques.get(TipoProduto.JOGO);
+        if (jogoEstoque == null) {
+            jogoEstoque = new Estoque<>();
+            estoques.put(TipoProduto.JOGO, jogoEstoque);
+        }
+        jogoEstoque.adicionarProduto((Jogo) produto);
     }
 
     @Override

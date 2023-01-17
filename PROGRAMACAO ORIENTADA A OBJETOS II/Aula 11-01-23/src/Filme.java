@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class Filme extends Produto{
     private String estudio;
@@ -48,6 +50,16 @@ public class Filme extends Produto{
 
     public void setProdutores(String[] produtores) {
         this.produtores = produtores;
+    }
+
+    @Override
+    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
+        Estoque<Filme> filmeEstoque = estoques.get(TipoProduto.FILME);
+        if (filmeEstoque == null) {
+            filmeEstoque = new Estoque<>();
+            estoques.put(TipoProduto.FILME, filmeEstoque);
+        }
+        filmeEstoque.adicionarProduto((Filme) produto);
     }
 
     @Override

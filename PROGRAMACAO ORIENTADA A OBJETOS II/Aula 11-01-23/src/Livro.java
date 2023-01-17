@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class Livro extends Produto {
     private String[] generos;
@@ -38,6 +40,16 @@ public class Livro extends Produto {
 
     public void setEditora(String editora) {
         this.editora = editora;
+    }
+
+    @Override
+    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
+        Estoque<Livro> livroEstoque = estoques.get(TipoProduto.LIVRO);
+        if (livroEstoque == null) {
+            livroEstoque = new Estoque<>();
+            estoques.put(TipoProduto.LIVRO, livroEstoque);
+        }
+        livroEstoque.adicionarProduto((Livro) produto);
     }
 
     @Override

@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class AlbumMusica extends Produto{
     private String[] musicos;
@@ -38,6 +40,16 @@ public class AlbumMusica extends Produto{
 
     public void setSelos(String[] selos) {
         this.selos = selos;
+    }
+
+    @Override
+    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
+        Estoque<AlbumMusica> albumMusicaEstoque = estoques.get(TipoProduto.ALBUM_MUSICA);
+        if (albumMusicaEstoque == null) {
+            albumMusicaEstoque = new Estoque<>();
+            estoques.put(TipoProduto.ALBUM_MUSICA, albumMusicaEstoque);
+        }
+        albumMusicaEstoque.adicionarProduto((AlbumMusica) produto);
     }
 
     @Override

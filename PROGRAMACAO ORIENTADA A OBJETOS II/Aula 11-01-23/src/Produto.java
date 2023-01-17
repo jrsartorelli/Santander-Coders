@@ -1,4 +1,4 @@
-public abstract class Produto {
+public abstract class Produto implements RepositorioProduto {
     private Integer id;
     private String nome;
     private double preco;

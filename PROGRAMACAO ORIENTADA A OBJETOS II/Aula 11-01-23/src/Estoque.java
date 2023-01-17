@@ -4,11 +4,6 @@ import java.util.Objects;
 
 class Estoque <T extends Produto>{
     private List<T> produtos = new ArrayList<>();
-    private Class tipoProduto;
-
-    public Estoque(Class tipoProduto) {
-        this.tipoProduto = tipoProduto;
-    }
 
     public List<T> getProdutos() {
         return produtos;
@@ -60,13 +55,9 @@ class Estoque <T extends Produto>{
         return false;
     }
 
-    public Class getTipoProduto() {
-        return tipoProduto;
-    }
-
     @Override
     public String toString() {
-        return "Estoque " + tipoProduto.getName() +
-                " = " + produtos;
+        return "Estoque = " +
+                produtos;
     }
 }

@@ -57,8 +57,7 @@ public abstract class Produto implements AdicaoProduto, VendaProduto {
         if (isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
             System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
         } else if(decrementarQuantidade(quantidade)) {
-            double valorTotal = getPreco() * quantidade;
-            return valorTotal;
+            return getPreco() * quantidade;
         } else {
             System.out.println("Não há em estoque quantidade suficiente para realizar a venda.");
         }

@@ -1,3 +1,3 @@
 public interface VendaProduto {
-    public double venderProduto(int quantidade, Comprador comprador);
+    double venderProduto(int quantidade, Comprador comprador);
 }

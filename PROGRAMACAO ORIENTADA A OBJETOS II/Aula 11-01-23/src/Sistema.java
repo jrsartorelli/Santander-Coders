@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Sistema {
     public static void main(String[] args) {
 
@@ -33,7 +30,7 @@ public class Sistema {
 
         //Condição para igualdade na comparação — id e nome
         //Override do método equals na classe Produto
-        Integer idProduto = 1;
+        int idProduto = 1;
         String nomeProduto = "O Senhor dos Anéis";
         System.out.println("Imprimindo o produto de id: " + idProduto);
         System.out.println(livraria.buscarProduto(idProduto));
@@ -73,7 +70,6 @@ public class Sistema {
 
         //Remove produto por nome ou id
         nomeProduto = "A Menina que Roubava Livros";
-        idProduto = 3;
         System.out.println("\nRemover produto com nome: \"" + nomeProduto + "\"");
         if (livraria.removerProduto(nomeProduto)) {
             System.out.println("Produto com nome \"" + nomeProduto + "\" removido do estoque");
@@ -105,7 +101,7 @@ public class Sistema {
 
         //Vender um produto: o produto vendido dever ter a quantidade decrementada
         int quantidadeVenda = 10;
-        double dinheiroRecebido = 0;
+        double dinheiroRecebido;
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         System.out.println("\nIniciando o processo de Venda de " + quantidadeVenda + " itens de \"" + nomeProduto + "\"");

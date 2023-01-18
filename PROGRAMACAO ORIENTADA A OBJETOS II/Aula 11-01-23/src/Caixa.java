@@ -5,10 +5,6 @@ public class Caixa {
         this.dinheiro = 0;
     }
 
-    public Caixa(double dinheiro) {
-        this.dinheiro = dinheiro;
-    }
-
     public double getDinheiro() {
         return dinheiro;
     }

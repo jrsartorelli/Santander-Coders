@@ -13,7 +13,7 @@ public class LivrariaServiceImplement implements LivrariaService {
 
     @Override
     public void adicionarProduto(Produto produto) {
-        ((AdicaoProduto)produto).adicionarProduto(produto, estoques);
+        produto.adicionarProduto(produto, estoques);
     }
 
     @Override
@@ -42,10 +42,7 @@ public class LivrariaServiceImplement implements LivrariaService {
     public Produto buscarProduto(Integer id, TipoProduto tipoProduto) {
         Estoque estoque = estoques.get(tipoProduto);
         if (estoque != null){
-            Produto produto = estoque.buscarProduto(id);
-            if (produto != null) {
-                return produto;
-            }
+            return estoque.buscarProduto(id);
         }
         return null;
     }
@@ -54,10 +51,7 @@ public class LivrariaServiceImplement implements LivrariaService {
     public Produto buscarProduto(String nome, TipoProduto tipoProduto) {
         Estoque estoque = estoques.get(tipoProduto);
         if (estoque != null){
-            Produto produto = estoque.buscarProduto(nome);
-            if (produto != null) {
-                return produto;
-            }
+            return estoque.buscarProduto(nome);
         }
         return null;
     }
@@ -112,7 +106,9 @@ public class LivrariaServiceImplement implements LivrariaService {
     @Override
     public void listarItensEstoque() {
         for (Estoque estoque : estoques.values()) {
-            estoque.getProdutos().forEach(produto -> System.out.println(produto));
+            if (estoque != null){
+                estoque.getProdutos().forEach(System.out::println);
+            }
         }
     }
 
@@ -120,7 +116,7 @@ public class LivrariaServiceImplement implements LivrariaService {
     public void listarItensEstoque(TipoProduto tipoProduto) {
         Estoque estoque = estoques.get(tipoProduto);
         if (estoque != null){
-            estoque.getProdutos().forEach(produto -> System.out.println(produto));
+            estoque.getProdutos().forEach(System.out::println);
         }
     }
 

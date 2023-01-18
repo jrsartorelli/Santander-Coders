@@ -44,10 +44,6 @@ public class Jogo extends Produto{
     @Override
     public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
         Estoque<Jogo> jogoEstoque = estoques.get(TipoProduto.JOGO);
-        if (jogoEstoque == null) {
-            jogoEstoque = new Estoque<>();
-            estoques.put(TipoProduto.JOGO, jogoEstoque);
-        }
         jogoEstoque.adicionarProduto((Jogo) produto);
     }
 

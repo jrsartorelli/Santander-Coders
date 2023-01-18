@@ -45,10 +45,6 @@ public class AlbumMusica extends Produto{
     @Override
     public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
         Estoque<AlbumMusica> albumMusicaEstoque = estoques.get(TipoProduto.ALBUM_MUSICA);
-        if (albumMusicaEstoque == null) {
-            albumMusicaEstoque = new Estoque<>();
-            estoques.put(TipoProduto.ALBUM_MUSICA, albumMusicaEstoque);
-        }
         albumMusicaEstoque.adicionarProduto((AlbumMusica) produto);
     }
 

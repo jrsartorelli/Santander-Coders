@@ -3,12 +3,17 @@ import java.util.Map;
 
 public class LivrariaServiceImplement implements LivrariaService {
     private Map<TipoProduto, Estoque> estoques = new HashMap<>();
-    final double VALOR_TOTAL_LIVROS_APLICAR_DESCONTO = 200;
-    final double PERCENTAGEM_DESCONTO = 0.15;
+
+    public LivrariaServiceImplement() {
+        for (TipoProduto tipoProduto : TipoProduto.values()) {
+            Estoque estoque = new Estoque();
+            estoques.put(tipoProduto, estoque);
+        }
+    }
 
     @Override
     public void adicionarProduto(Produto produto) {
-        ((RepositorioProduto)produto).adicionarProduto(produto, estoques);
+        ((AdicaoProduto)produto).adicionarProduto(produto, estoques);
     }
 
     @Override
@@ -78,98 +83,49 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public void removerProduto(Produto produto) {
-        for (Estoque estoque : estoques.values()) {
-            if (estoque.getProdutos().remove(produto)) {
-                return;
-            }
+    public boolean removerProduto(Integer id, TipoProduto tipoProduto) {
+        Estoque estoque = estoques.get(tipoProduto);
+        if (estoque != null){
+            return estoque.removerProduto(id);
         }
-        System.err.println("Produto não encontrado para remoção!");
+        return false;
     }
 
-////    @Override
-////    public int buscarQuantidadeItens(Class tipoProduto) {
-////        for (Estoque estoque : estoques) {
-////            if (estoque.getTipoProduto().equals(tipoProduto)) {
-////                return estoque.getProdutos().size();
-////            }
-////        }
-////        System.err.println("Tipo do produto não identificado");
-////        return 0;
-////    }
-//
-//    @Override
-//    public void listarItensEstoque() {
-//        for (Estoque estoque : estoques) {
-//            System.out.println(estoque);
-//        }
-//    }
-//
-////    @Override
-////    public void listarItensEstoque(Class categoria) {
-////        for (Estoque estoque : estoques) {
-////            if (estoque.getTipoProduto().equals(categoria)){
-////                System.out.println(estoque);
-////                return;
-////            }
-////        }
-////    }
-//
-//    @Override
-//    public double venderProduto(Integer id, Comprador comprador) {
-//        Produto produto = buscarProduto(id);
-//        return venderProduto(produto, 1, comprador);
-//    }
-//
-//    @Override
-//    public double venderProduto(String nome, Comprador comprador) {
-//        Produto produto = buscarProduto(nome);
-//        return venderProduto(produto, 1, comprador);
-//    }
-//
-//    @Override
-//    public double venderProduto(Integer id, int quantidade, Comprador comprador) {
-//        Produto produto = buscarProduto(id);
-//        return venderProduto(produto, quantidade, comprador);
-//    }
-//
-//    @Override
-//    public double venderProduto(String nome, int quantidade, Comprador comprador) {
-//        Produto produto = buscarProduto(nome);
-//        return venderProduto(produto, quantidade, comprador);
-//    }
-//
-//    private double venderProduto(Produto produto, int quantidade, Comprador comprador){
-//        if(produto == null) {
-//            return 0;
-//        }
-//        if (produto.isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
-//            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
-//        }
-//        else if(decrementarEstoque(produto, quantidade)) {
-//            double valorTotal = produto.getPreco() * quantidade;
-//            if(produto instanceof Livro && valorTotal >= VALOR_TOTAL_LIVROS_APLICAR_DESCONTO){
-//                double valorDesconto = valorTotal * PERCENTAGEM_DESCONTO;
-//                System.out.printf("Desconto de R$%.2f aplicado ao total de R$%.2f, ", valorDesconto, valorTotal);
-//                valorTotal -= valorDesconto; // Desconto na categoria Livros
-//                System.out.printf("valor final a ser pago = R$%.2f\n", valorTotal);
-//            }
-//            return valorTotal;
-//        }
-//        return 0;
-//    }
-//
-//    private boolean decrementarEstoque(Produto produto, int quantidade){
-//        if (produto != null) {
-//            if (produto.decrementarQuantidade(quantidade)){
-//                return true;
-//            } else {
-//                System.err.println("Não há quantidade suficiente em estoque");
-//            }
-//        } else {
-//            System.err.println("Produto não encontrado");
-//            return false;
-//        }
-//        return false;
-//    }
+    @Override
+    public boolean removerProduto(String nome, TipoProduto tipoProduto) {
+        Estoque estoque = estoques.get(tipoProduto);
+        if (estoque != null){
+            return estoque.removerProduto(nome);
+        }
+        return false;
+    }
+
+    @Override
+    public int buscarQuantidadePorCategoria(TipoProduto tipoProduto) {
+        Estoque estoque = estoques.get(tipoProduto);
+        if (estoque != null){
+            return estoque.getProdutos().size();
+        }
+        return 0;
+    }
+
+    @Override
+    public void listarItensEstoque() {
+        for (Estoque estoque : estoques.values()) {
+            estoque.getProdutos().forEach(produto -> System.out.println(produto));
+        }
+    }
+
+    @Override
+    public void listarItensEstoque(TipoProduto tipoProduto) {
+        Estoque estoque = estoques.get(tipoProduto);
+        if (estoque != null){
+            estoque.getProdutos().forEach(produto -> System.out.println(produto));
+        }
+    }
+
+    @Override
+    public double venderProduto(Produto produto, int quantidade, Comprador comprador) {
+        return ((VendaProduto)produto).venderProduto(quantidade, comprador);
+    }
 }

@@ -7,19 +7,15 @@ public interface LivrariaService <T extends Produto>{
     public T buscarProduto(Integer id, TipoProduto tipoProduto);
     public T buscarProduto(String nome, TipoProduto tipoProduto);
 
-
     public boolean removerProduto(Integer id);
     public boolean removerProduto(String nome);
-    public void removerProduto(T t);
+    public boolean removerProduto(Integer id, TipoProduto tipoProduto);
+    public boolean removerProduto(String nome, TipoProduto tipoProduto);
 
-////    public int buscarQuantidadeItens(Class tipoProduto);
-//
-//    public void listarItensEstoque();
-////    public void listarItensEstoque(Class categoria);
-//
-//    public double venderProduto(Integer id, Comprador comprador);
-//    public double venderProduto(String nome, Comprador comprador);
-//    public double venderProduto(Integer id, int quantidade, Comprador comprador);
-//    public double venderProduto(String nome, int quantidade, Comprador comprador);
+    public int buscarQuantidadePorCategoria(TipoProduto tipoProduto);
 
+    public void listarItensEstoque();
+    public void listarItensEstoque(TipoProduto tipoProduto);
+
+    public double venderProduto(Produto produto, int quantidade, Comprador comprador);
 }

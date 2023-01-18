@@ -1,4 +1,4 @@
-public abstract class Produto implements RepositorioProduto {
+public abstract class Produto implements AdicaoProduto, VendaProduto {
     private Integer id;
     private String nome;
     private double preco;
@@ -51,6 +51,18 @@ public abstract class Produto implements RepositorioProduto {
             return true;
         }
         return false;
+    }
+
+    public double venderProduto(int quantidade, Comprador comprador) {
+        if (isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
+            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
+        } else if(decrementarQuantidade(quantidade)) {
+            double valorTotal = getPreco() * quantidade;
+            return valorTotal;
+        } else {
+            System.out.println("Não há em estoque quantidade suficiente para realizar a venda.");
+        }
+        return 0;
     }
 
     @Override

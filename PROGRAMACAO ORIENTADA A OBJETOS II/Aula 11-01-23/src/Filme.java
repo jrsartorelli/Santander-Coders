@@ -55,10 +55,6 @@ public class Filme extends Produto{
     @Override
     public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
         Estoque<Filme> filmeEstoque = estoques.get(TipoProduto.FILME);
-        if (filmeEstoque == null) {
-            filmeEstoque = new Estoque<>();
-            estoques.put(TipoProduto.FILME, filmeEstoque);
-        }
         filmeEstoque.adicionarProduto((Filme) produto);
     }
 

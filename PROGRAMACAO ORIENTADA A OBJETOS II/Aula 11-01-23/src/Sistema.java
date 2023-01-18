@@ -7,9 +7,8 @@ public class Sistema {
         LivrariaService livraria = new LivrariaServiceImplement();
         Caixa caixa = new Caixa();
         Comprador comprador = new Comprador("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
-        List<Produto> produtos = new ArrayList<>();
 
-        livraria.adicionarProduto(new Livro("O Senhor dos Anéis", 1, 49.99, 10, true,
+        livraria.adicionarProduto(new Livro("O Senhor dos Anéis", 1, 20, 10, true,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes"));
         livraria.adicionarProduto(new Livro("Harry Potter e a Pedra Filosofal", 2,39.99, 15, false,
                 new String[]{"Fantasia", "Aventura"}, "J.K. Rowling", "Editora Rocco"));
@@ -25,16 +24,15 @@ public class Sistema {
                 "Sony", "Ação-Aventura", "Naughty Dog"));
         livraria.adicionarProduto(new Brinquedo("Boneca Barbie", 30, 49.99, 20, false, "Bonecas"));
         livraria.adicionarProduto(new Brinquedo("Carrinho Hot Wheels", 31, 29.99, 15, false, "Veículos"));
-        livraria.adicionarProduto(new AlbumMusica("Album 1", 1, 19.99, 10, false,
+        livraria.adicionarProduto(new AlbumMusica("Album 1", 40, 19.99, 10, false,
                 new String[]{"Músico 1", "Músico 2"}, new String[]{"Rock", "Pop"}, new String[]{"Selo 1", "Selo 2"}));
-        livraria.adicionarProduto(new AlbumMusica("Album 2", 2, 29.99, 15, true,
+        livraria.adicionarProduto(new AlbumMusica("Album 2", 41, 29.99, 15, true,
                 new String[]{"Músico 3", "Músico 4", "Músico 5"}, new String[]{"Jazz", "Blues"}, new String[]{"Selo 3"}));
-        livraria.adicionarProduto(new AlbumMusica("Album 3", 3, 24.99, 20, false,
+        livraria.adicionarProduto(new AlbumMusica("Album 3", 42, 24.99, 20, false,
                 new String[]{"Músico 6", "Músico 7", "Músico 8", "Músico 9"}, new String[]{"Funk", "R&B"}, new String[]{"Selo 4", "Selo 5"}));
 
         //Condição para igualdade na comparação — id e nome
         //Override do método equals na classe Produto
-        //A quantidade será incrementada em 10 unidades
         Integer idProduto = 1;
         String nomeProduto = "O Senhor dos Anéis";
         System.out.println("Imprimindo o produto de id: " + idProduto);
@@ -64,17 +62,19 @@ public class Sistema {
         System.out.println(livraria.buscarProduto(nomeProduto, TipoProduto.BRINQUEDO));
 
         //Variável produto recebe a referência, portanto qualquer alteração nos dados é refletida no produto do estoque
-        System.out.println("\nAterando o preço do produto: " + nomeProduto + " - " + TipoProduto.BRINQUEDO);
+        double novoPrecoProduto = 19.99;
+        System.out.println("\nAterando o preço do produto: " + nomeProduto + " - " + TipoProduto.BRINQUEDO +
+                " -> R$ " + novoPrecoProduto);
         produto = livraria.buscarProduto(nomeProduto);
         if (produto != null){
-            produto.setPreco(20);
+            produto.setPreco(novoPrecoProduto);
         }
         System.out.println(livraria.buscarProduto(nomeProduto, TipoProduto.BRINQUEDO));
 
         //Remove produto por nome ou id
         nomeProduto = "A Menina que Roubava Livros";
         idProduto = 3;
-        System.out.println("\nRemover produto com nome: " + nomeProduto);
+        System.out.println("\nRemover produto com nome: \"" + nomeProduto + "\"");
         if (livraria.removerProduto(nomeProduto)) {
             System.out.println("Produto com nome \"" + nomeProduto + "\" removido do estoque");
         } else {
@@ -82,40 +82,41 @@ public class Sistema {
         }
 
         //Tentativa de remoção do produto que já foi removido
-        System.out.println("\nRemover produto com nome: " + nomeProduto);
+        System.out.println("\nRemover produto com nome: \"" + nomeProduto + "\"");
         if (livraria.removerProduto(nomeProduto)) {
             System.out.println("Produto com nome \"" + nomeProduto + "\" removido do estoque");
         } else {
             System.out.println("Produto com nome \"" + nomeProduto + "\" não encontrado para remoção!");
         }
 
+        //Quantidade de itens por categoria de Produto
+        System.out.println("\nQuantidade de itens por categoria de Produto");
+        for (TipoProduto tipoProduto : TipoProduto.values()) {
+            System.out.println(livraria.buscarQuantidadePorCategoria(tipoProduto) + " " + tipoProduto.name());
+        }
 
+        //Listar todos os itens dos Estoques
+        System.out.println("\nListando todo o estoque:");
+        livraria.listarItensEstoque();
 
-//        //Quantidade de itens de um determinado tipo de Produto
-////        System.out.println("\nQuantidade de itens de determinado tipo de Produto");
-////        System.out.println(livraria.buscarQuantidadeItens(Livro.class) + " livros");
-////        System.out.println(livraria.buscarQuantidadeItens(Jogo.class) + " jogos");
-////        System.out.println(livraria.buscarQuantidadeItens(Brinquedo.class) + " brinquedos");
-////        System.out.println(livraria.buscarQuantidadeItens(Filme.class) + " filmes");
-////        System.out.println(livraria.buscarQuantidadeItens(AlbumMusica.class) + " álbuns de música");
-//
-//        //Listar itens de todos os Estoques
-//        System.out.println("\nListando todo o estoque:");
-//        livraria.listarItensEstoque();
-//
-//        //Listar itens por categoria
-////        this.setTipoProduto(TipoProduto.ALBUM_MUSICA);
-//
-//        //Vender um produto: o produto vendido dever ter a quantidade decrementada
-//        int quantidadeVenda = 10;
-//        String nomeProduto = "O Senhor dos Anéis";
-//        System.out.println("\nIniciando o processo de Venda de " + quantidadeVenda + " itens de \"" + nomeProduto + "\"");
-//        double dinheiroRecebido = livraria.venderProduto(nomeProduto, quantidadeVenda, comprador);
-//        System.out.printf("Dinheiro recebido da venda = R$%.2f\n", dinheiroRecebido);
-//        caixa.adicionarDinheiro(dinheiroRecebido);
-//        System.out.printf("\nValor em caixa = R$%.2f%n\n", caixa.getDinheiro());
-//
-//        System.out.println(livraria.buscarProduto("O Senhor dos Anéis"));
+        //Listar itens por categoria de Produto
+        System.out.println("\nListando itens por categoria de Produto: " + TipoProduto.FILME);
+        livraria.listarItensEstoque(TipoProduto.FILME);
+
+        //Vender um produto: o produto vendido dever ter a quantidade decrementada
+        int quantidadeVenda = 10;
+        double dinheiroRecebido = 0;
+        nomeProduto = "O Senhor dos Anéis";
+        produto = livraria.buscarProduto(nomeProduto);
+        System.out.println("\nIniciando o processo de Venda de " + quantidadeVenda + " itens de \"" + nomeProduto + "\"");
+        System.out.println("Imprimindo os dados do produto antes da venda: ");
+        System.out.println(produto);
+        dinheiroRecebido = livraria.venderProduto(produto, quantidadeVenda, comprador);
+        System.out.println("Imprimindo os dados do produto após a venda realizada: ");
+        System.out.println(produto);
+        System.out.printf("Dinheiro recebido da venda = R$%.2f\n", dinheiroRecebido);
+        caixa.adicionarDinheiro(dinheiroRecebido);
+        System.out.printf("\nValor em caixa = R$%.2f%n\n", caixa.getDinheiro());
 
     }
 }

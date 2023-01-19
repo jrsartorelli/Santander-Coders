@@ -12,6 +12,7 @@ public class AlbumMusica extends Produto{
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.setPublicoAdulto(publicoAdulto);
+        this.setTipoProduto(TipoProduto.ALBUM_MUSICA);
         this.musicos = musicos;
         this.generos = generos;
         this.selos = selos;
@@ -39,12 +40,6 @@ public class AlbumMusica extends Produto{
 
     public void setSelos(String[] selos) {
         this.selos = selos;
-    }
-
-    @Override
-    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
-        Estoque<AlbumMusica> albumMusicaEstoque = estoques.get(TipoProduto.ALBUM_MUSICA);
-        albumMusicaEstoque.adicionarProduto((AlbumMusica) produto);
     }
 
     @Override

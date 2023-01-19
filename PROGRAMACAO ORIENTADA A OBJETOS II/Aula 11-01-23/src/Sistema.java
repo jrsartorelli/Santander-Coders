@@ -3,7 +3,7 @@ public class Sistema {
 
         LivrariaService livraria = new LivrariaServiceImplement();
         Caixa caixa = new Caixa();
-        Comprador comprador = new Comprador("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
+        Cliente comprador = new Cliente("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
 
         livraria.adicionarProduto(new Livro("O Senhor dos Anéis", 1, 20, 10, true,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes"));

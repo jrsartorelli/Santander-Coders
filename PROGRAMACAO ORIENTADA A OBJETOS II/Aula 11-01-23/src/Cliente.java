@@ -2,13 +2,13 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class Comprador {
+public class Cliente {
     private String nome;
     private String RG;
     private String CPF;
     private LocalDate dataNascimento;
 
-    public Comprador(String nome, String rg, String cpf, String dataNascimento) {
+    public Cliente(String nome, String rg, String cpf, String dataNascimento) {
         this.nome = nome;
         this.RG = rg;
         this.CPF = cpf;

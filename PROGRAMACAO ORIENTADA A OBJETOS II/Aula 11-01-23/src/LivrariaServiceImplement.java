@@ -6,14 +6,13 @@ public class LivrariaServiceImplement implements LivrariaService {
 
     public LivrariaServiceImplement() {
         for (TipoProduto tipoProduto : TipoProduto.values()) {
-            Estoque estoque = new Estoque();
-            estoques.put(tipoProduto, estoque);
+            estoques.put(tipoProduto, new Estoque());
         }
     }
 
     @Override
     public void adicionarProduto(Produto produto) {
-        produto.adicionarProduto(produto, estoques);
+        estoques.get(produto.getTipoProduto()).adicionarProduto(produto);
     }
 
     @Override
@@ -121,7 +120,7 @@ public class LivrariaServiceImplement implements LivrariaService {
     }
 
     @Override
-    public double venderProduto(Produto produto, int quantidade, Comprador comprador) {
+    public double venderProduto(Produto produto, int quantidade, Cliente comprador) {
         return ((VendaProduto)produto).venderProduto(quantidade, comprador);
     }
 }

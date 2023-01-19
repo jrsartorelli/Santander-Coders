@@ -1,9 +1,10 @@
-public abstract class Produto implements AdicaoProduto, VendaProduto {
+public abstract class Produto implements VendaProduto {
     private Integer id;
     private String nome;
     private double preco;
     private int quantidade;
     private boolean publicoAdulto;
+    private TipoProduto tipoProduto;
 
     public int getId() { return id; }
 
@@ -41,8 +42,12 @@ public abstract class Produto implements AdicaoProduto, VendaProduto {
         this.publicoAdulto = publicoAdulto;
     }
 
-    public void incrementarQuantidade(int quantidade){
-        this.quantidade += quantidade;
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
 
     public boolean decrementarQuantidade(int quantidade){
@@ -53,7 +58,7 @@ public abstract class Produto implements AdicaoProduto, VendaProduto {
         return false;
     }
 
-    public double venderProduto(int quantidade, Comprador comprador) {
+    public double venderProduto(int quantidade, Cliente comprador) {
         if (isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
             System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
         } else if(decrementarQuantidade(quantidade)) {

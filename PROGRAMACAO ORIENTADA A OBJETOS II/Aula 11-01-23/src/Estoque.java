@@ -13,7 +13,7 @@ class Estoque <T extends Produto>{
         if (produtos.contains(t)){
             int indice = produtos.indexOf(t);
             T produto = produtos.get(indice);
-            produto.incrementarQuantidade(t.getQuantidade());
+            produto.setQuantidade(produto.getQuantidade() + t.getQuantidade());
         } else {
             produtos.add(t);
         }

@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Map;
 
 public class Livro extends Produto {
     private String[] generos;
@@ -14,6 +13,7 @@ public class Livro extends Produto {
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.setPublicoAdulto(publicoAdulto);
+        this.setTipoProduto(TipoProduto.LIVRO);
         this.generos = generos;
         this.escritor = escritor;
         this.editora = editora;
@@ -44,13 +44,7 @@ public class Livro extends Produto {
     }
 
     @Override
-    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
-        Estoque<Livro> livroEstoque = estoques.get(TipoProduto.LIVRO);
-        livroEstoque.adicionarProduto((Livro) produto);
-    }
-
-    @Override
-    public double venderProduto(int quantidade, Comprador comprador) {
+    public double venderProduto(int quantidade, Cliente comprador) {
         if (isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
             System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
         } else if(decrementarQuantidade(quantidade)) {

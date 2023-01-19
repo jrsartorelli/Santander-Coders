@@ -17,5 +17,5 @@ public interface LivrariaService <T extends Produto>{
     void listarItensEstoque();
     void listarItensEstoque(TipoProduto tipoProduto);
 
-    double venderProduto(Produto produto, int quantidade, Comprador comprador);
+    double venderProduto(Produto produto, int quantidade, Cliente comprador);
 }

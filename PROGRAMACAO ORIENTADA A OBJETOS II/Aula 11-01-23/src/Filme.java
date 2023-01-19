@@ -13,6 +13,7 @@ public class Filme extends Produto{
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.setPublicoAdulto(publicoAdulto);
+        this.setTipoProduto(TipoProduto.FILME);
         this.estudio = estudio;
         this.diretores = diretores;
         this.generos = generos;
@@ -49,12 +50,6 @@ public class Filme extends Produto{
 
     public void setProdutores(String[] produtores) {
         this.produtores = produtores;
-    }
-
-    @Override
-    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
-        Estoque<Filme> filmeEstoque = estoques.get(TipoProduto.FILME);
-        filmeEstoque.adicionarProduto((Filme) produto);
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Brinquedo extends Produto{
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.setPublicoAdulto(publicoAdulto);
+        this.setTipoProduto(TipoProduto.BRINQUEDO);
         this.tipo = tipo;
     }
 
@@ -18,12 +19,6 @@ public class Brinquedo extends Produto{
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    @Override
-    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
-        Estoque<Brinquedo> brinquedoEstoque = estoques.get(TipoProduto.BRINQUEDO);
-        brinquedoEstoque.adicionarProduto((Brinquedo) produto);
     }
 
     @Override

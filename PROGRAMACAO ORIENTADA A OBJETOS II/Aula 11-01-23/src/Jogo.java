@@ -11,6 +11,7 @@ public class Jogo extends Produto{
         this.setPreco(preco);
         this.setQuantidade(quantidade);
         this.setPublicoAdulto(publicoAdulto);
+        this.setTipoProduto(TipoProduto.JOGO);
         this.distribuidora = distribuidora;
         this.genero = genero;
         this.estudio = estudio;
@@ -38,12 +39,6 @@ public class Jogo extends Produto{
 
     public void setEstudio(String estudio) {
         this.estudio = estudio;
-    }
-
-    @Override
-    public void adicionarProduto(Produto produto, Map<TipoProduto, Estoque> estoques) {
-        Estoque<Jogo> jogoEstoque = estoques.get(TipoProduto.JOGO);
-        jogoEstoque.adicionarProduto((Jogo) produto);
     }
 
     @Override

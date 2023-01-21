@@ -182,14 +182,27 @@ public class Sistema {
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
+        //Aumentando o valor total de livros para pegar porcentagem de desconto maior: 20%
+        nomeProduto = "O Senhor dos Anéis";
+        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        quantidade = 15;
+        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto +
+                " no carrinho... desconto maior: 20%");
+        livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
+        livraria.listarItensCarrinho(carrinhoCompra);
+
         //Processo de finalização da Compra
         System.out.println("\nFinalizando a compra:");
         caixa.adicionarDinheiro(livraria.comprarProdutosCarrinho(carrinhoCompra));
         System.out.printf("Valor em Caixa: %.2f\n", caixa.getSaldo());
 
         //Listar todos os itens dos Estoques
-        System.out.println("\nListando todo o estoque despois da compra finalizada:");
+        System.out.println("\nListando todo o estoque depois da compra finalizada:");
         livraria.listarItensEstoque();
+
+        //Imprimindo carrinho depois de fechar a compra
+        System.out.println("\nImprimindo o status do carrinho de compras após o fechamento da compra:");
+        livraria.listarItensCarrinho(carrinhoCompra);
 
     }
 }

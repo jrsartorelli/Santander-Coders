@@ -1,5 +1,3 @@
-import javax.sound.midi.Soundbank;
-import java.util.HashMap;
 import java.util.Map;
 
 public class LivrariaServiceImplement  implements LivrariaService {
@@ -122,7 +120,7 @@ public class LivrariaServiceImplement  implements LivrariaService {
 
     @Override
     public void adicionarProdutoCarrinho(Produto produto, int quantidade, CarrinhoCompra carrinhoCompra) {
-        if (produto.isPublicoAdulto() && !carrinhoCompra.getCliente().isMaiorDeIdade()) {
+        if (produto.isPublicoAdulto() && !carrinhoCompra.getCLIENTE().isMaiorDeIdade()) {
             System.out.println("Este Produto tem venda permitida apenas para maiores de 18 anos");
             return;
         }

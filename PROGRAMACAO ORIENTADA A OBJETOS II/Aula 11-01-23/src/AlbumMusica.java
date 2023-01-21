@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Map;
 
 public class AlbumMusica extends Produto{
     private String[] musicos;
@@ -15,30 +14,6 @@ public class AlbumMusica extends Produto{
         this.setTipoProduto(TipoProduto.ALBUM_MUSICA);
         this.musicos = musicos;
         this.generos = generos;
-        this.selos = selos;
-    }
-
-    public String[] getMusicos() {
-        return musicos;
-    }
-
-    public void setMusicos(String[] musicos) {
-        this.musicos = musicos;
-    }
-
-    public String[] getGeneros() {
-        return generos;
-    }
-
-    public void setGeneros(String[] generos) {
-        this.generos = generos;
-    }
-
-    public String[] getSelos() {
-        return selos;
-    }
-
-    public void setSelos(String[] selos) {
         this.selos = selos;
     }
 

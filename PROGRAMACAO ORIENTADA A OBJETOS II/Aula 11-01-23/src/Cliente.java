@@ -24,30 +24,6 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getRG() {
-        return RG;
-    }
-
-    public void setRG(String RG) {
-        this.RG = RG;
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     public boolean isMaiorDeIdade(){
         LocalDate dataAtual = LocalDate.now();
         Period idade = Period.between(dataNascimento, dataAtual);

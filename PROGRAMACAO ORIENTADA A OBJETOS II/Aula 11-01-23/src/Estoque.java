@@ -12,7 +12,7 @@ public class Estoque <T extends Produto>{
     public void adicionarProduto(T t){
         if (produtos.contains(t)){
             int indice = produtos.indexOf(t);
-            T produto = (T) produtos.get(indice);
+            T produto = produtos.get(indice);
             produto.setQuantidade(produto.getQuantidade() + t.getQuantidade());
         } else {
             produtos.add(t);

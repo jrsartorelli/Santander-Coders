@@ -82,7 +82,9 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
     }
 
     public void limparCarrinho(CarrinhoCompra carrinhoCompra) {
-        carrinhoCompra = new CarrinhoCompra(carrinhoCompra.getCliente());
+        carrinhoCompra.getListaProdutosCarrinho().clear();
+        carrinhoCompra.setValorTotal(0);
+        carrinhoCompra.getValoresDescontosCategoria().clear();
     }
 
     public double calcularDescontoCategoria(TipoProduto tipoProduto, double valorTotalCategoria, CarrinhoCompra carrinhoCompra) {

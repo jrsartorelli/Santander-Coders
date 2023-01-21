@@ -5,14 +5,15 @@ public class CarrinhoCompra {
     private Map<TipoProduto, List<ItemCarrinho>> listaProdutosCarrinho = new HashMap<>();
     private Map<TipoProduto, List<Desconto>> listaDescontosCategoria = new HashMap<>();
     private Map<TipoProduto, Double> valoresDescontosCategoria = new HashMap<>();
-    private Cliente cliente;
+    private final Cliente CLIENTE;
     private double valorTotal;
 
     public CarrinhoCompra(Cliente cliente) {
         List<Desconto> listaDescontosLivros = new ArrayList<>();
         listaDescontosLivros.add(new Desconto(.15, 200));
+        listaDescontosLivros.add(new Desconto(.20, 300));
         listaDescontosCategoria.put(TipoProduto.LIVRO, listaDescontosLivros);
-        this.cliente = cliente;
+        this.CLIENTE = cliente;
         this.valorTotal = 0;
     }
 
@@ -28,12 +29,8 @@ public class CarrinhoCompra {
         return listaDescontosCategoria;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Cliente getCLIENTE() {
+        return CLIENTE;
     }
 
     public double getValorTotal() {

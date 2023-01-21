@@ -153,7 +153,7 @@ public class Sistema {
         livraria.listarItensCarrinho(carrinhoCompra);
 
         //Removendo Item do carrinho
-        System.out.println("\nRemovendo o produto " + nomeProduto + " do carrinho...");
+        System.out.println("\nRemovendo o produto \"" + nomeProduto + "\" do carrinho...");
         livraria.removerProdutoCarrinho(produto, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
@@ -178,21 +178,21 @@ public class Sistema {
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 3;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+        System.out.println("\nRemovendo " + quantidade + " unidades do produto \"" + nomeProduto +
                 "\" do carrinho... Perdeu o desconto");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 8;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+        System.out.println("\nRemovendo " + quantidade + " unidades do produto \"" + nomeProduto +
                 "\" do carrinho... Tentando excluir quantidade maior que possui no carrinho");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 7;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+        System.out.println("\nRemovendo " + quantidade + " unidades do produto \"" + nomeProduto +
                 "\" do carrinho... Excluindo a quantidade total do carrinho, produto retirado do carrinho");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);

@@ -158,7 +158,8 @@ public class Sistema {
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
+                "\" no carrinho... desconto : 15%");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 

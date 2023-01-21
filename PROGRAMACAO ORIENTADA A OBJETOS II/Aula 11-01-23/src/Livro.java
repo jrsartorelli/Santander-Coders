@@ -44,25 +44,6 @@ public class Livro extends Produto {
     }
 
     @Override
-    public double venderProduto(int quantidade, Cliente comprador) {
-        if (isPublicoAdulto() && !comprador.isMaiorDeIdade()) {
-            System.out.println("Este produto tem venda permitida apenas para maiores de 18 anos.");
-        } else if(decrementarQuantidade(quantidade)) {
-            double valorTotal = getPreco() * quantidade;
-            if(valorTotal >= VALOR_TOTAL_LIVROS_APLICAR_DESCONTO){
-                double valorDesconto = valorTotal * PERCENTAGEM_DESCONTO;
-                System.out.printf("Desconto de R$%.2f aplicado ao total de R$%.2f, ", valorDesconto, valorTotal);
-                valorTotal -= valorDesconto;
-                System.out.printf("valor final a ser pago = R$%.2f\n", valorTotal);
-            }
-            return valorTotal;
-        } else {
-            System.out.println("Não há em estoque quantidade suficiente para realizar a venda.");
-        }
-        return 0;
-    }
-
-    @Override
     public String toString() {
         return "Livro{" + super.toString() +
                 ", generos=" + Arrays.toString(generos) +

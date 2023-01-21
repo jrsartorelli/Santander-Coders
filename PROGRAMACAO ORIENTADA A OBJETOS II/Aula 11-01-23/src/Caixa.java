@@ -1,21 +1,21 @@
 public class Caixa {
-    private double dinheiro;
+    private double saldo;
 
     public Caixa() {
-        this.dinheiro = 0;
+        this.saldo = 0;
     }
 
-    public double getDinheiro() {
-        return dinheiro;
+    public double getSaldo() {
+        return saldo;
     }
 
     public void adicionarDinheiro(double dinheiro){
-        this.dinheiro = dinheiro;
+        this.saldo = dinheiro;
     }
 
     public boolean retirarDinheiro(double dinheiro){
-        if (this.dinheiro >= dinheiro){
-            this.dinheiro -= dinheiro;
+        if (this.saldo >= dinheiro){
+            this.saldo -= dinheiro;
             return true;
         }
         return false;

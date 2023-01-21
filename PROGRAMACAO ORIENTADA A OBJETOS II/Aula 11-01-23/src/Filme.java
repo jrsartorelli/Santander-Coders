@@ -7,6 +7,7 @@ public class Filme extends Produto{
     private String[] generos;
     private String[] produtores;
 
+
     public Filme(String nome, Integer id, double preco, int quantidade, boolean publicoAdulto, String estudio, String[] diretores, String[] generos, String[] produtores) {
         this.setNome(nome);
         this.setId(id);

@@ -53,4 +53,16 @@ public class Cliente {
         Period idade = Period.between(dataNascimento, dataAtual);
         return idade.getYears() >= 18;
     }
+
+    private int calcularIdade() {
+        LocalDate dataAtual = LocalDate.now();
+        Period idade = Period.between(dataNascimento, dataAtual);
+        return idade.getYears();
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente: " + nome +
+                ", Idade: " + this.calcularIdade() + " anos";
+    }
 }

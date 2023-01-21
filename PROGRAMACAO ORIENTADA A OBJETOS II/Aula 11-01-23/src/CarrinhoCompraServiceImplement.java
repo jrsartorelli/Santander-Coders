@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
@@ -61,7 +62,10 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
 
     @Override
     public void listarItensCarrinho(CarrinhoCompra carrinhoCompra) {
-        carrinhoCompra.getListaProdutosCarrinho().values().forEach(System.out::println);
+        Collection<List<ItemCarrinho>> listaCategoria = carrinhoCompra.getListaProdutosCarrinho().values();
+        for (List<ItemCarrinho> listaItensCategoria : listaCategoria) {
+            listaItensCategoria.forEach(System.out::println);
+        }
         for (TipoProduto tipoProduto : carrinhoCompra.getValoresDescontosCategoria().keySet()) {
             System.out.printf("Desconto por Categoria - %s = R$%.2f\n", tipoProduto.toString(),
                     carrinhoCompra.getValoresDescontosCategoria().get(tipoProduto));

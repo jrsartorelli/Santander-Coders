@@ -25,10 +25,11 @@ public class ItemCarrinho {
 
     @Override
     public String toString() {
-        return  "Categoria=" + produto.getTipoProduto() +
-                ", id=" + produto.getId() +
-                ", nome=" + produto.getNome() +
-                ", preço=" + String.format("R$%.2f", produto.getPreco()) +
-                ", quantidade=" + quantidade;
+        return  "Categoria = " + produto.getTipoProduto() +
+                ",id = " + produto.getId() +
+                ",nome = " + produto.getNome() +
+                ", preço = " + String.format("R$%.2f", produto.getPreco()) +
+                ", quantidade=" + quantidade +
+                ", VALOR = " + String.format("R$%.2f", (quantidade * produto.getPreco()));
     }
 }

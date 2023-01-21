@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,7 +7,7 @@ public class Sistema {
 
         Map<TipoProduto, Estoque<? extends Produto>> estoques = new HashMap<>();
         LivrariaService livraria = new LivrariaServiceImplement(estoques);
-        Cliente cliente = new Cliente("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2000");
+        Cliente cliente = new Cliente("João Silva", "12.345.678-9", "123.456.789-10", "15/06/2005");
         CarrinhoCompra carrinhoCompra = new CarrinhoCompra(cliente);
         Caixa caixa = new Caixa();
 
@@ -27,7 +28,7 @@ public class Sistema {
         int idProduto;
         String nomeProduto;
 
-        estoqueLivro.adicionarProduto(new Livro("O Senhor dos Anéis", 1, 20, 10, true,
+        estoqueLivro.adicionarProduto(new Livro("O Senhor dos Anéis", 1, 20, 10, false,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes"));
         estoqueLivro.adicionarProduto(new Livro("Harry Potter e a Pedra Filosofal", 2,39.99, 15, false,
                 new String[]{"Fantasia", "Aventura"}, "J.K. Rowling", "Editora Rocco"));
@@ -50,11 +51,13 @@ public class Sistema {
         estoqueAlbumMusica.adicionarProduto(new AlbumMusica("Album 3", 42, 24.99, 20, false,
                 new String[]{"Músico 6", "Músico 7", "Músico 8", "Músico 9"}, new String[]{"Funk", "R&B"}, new String[]{"Selo 4", "Selo 5"}));
 
+        //**************** MANIPULAÇÃO DOS PRODUTOS EM ESTOQUE ****************
         //Condição para igualdade na comparação — id e nome
         //Override do método equals na classe Produto
+        System.out.println("\nManipulando os produtos em Estoque...");
         idProduto = 1;
         nomeProduto = "O Senhor dos Anéis";
-        System.out.println("Imprimindo o produto de id: " + idProduto);
+        System.out.println("\nImprimindo o produto de id: " + idProduto);
         System.out.println(livraria.buscarProduto(idProduto));
 
         //Adição de nova instância de produto com mesmo id e nome
@@ -62,22 +65,24 @@ public class Sistema {
         Livro livro = new Livro("O Senhor dos Anéis", 1, 49.99, 10, false,
                 new String[]{"Fantasia", "Aventura"}, "J.R.R. Tolkien", "Editora Martins Fontes");
         estoqueLivro.adicionarProduto(livro);
-        System.out.println("\nAdição de nova instância de produto com mesmo id e nome");
+        System.out.println("\nAdição de nova instância de produto com mesmo id e nome... Apenas a quantidade será incrementada");
         System.out.println("Imprimindo o produto de id: " + idProduto);
         System.out.println(livraria.buscarProduto(idProduto));
 
-        //Busca produto por nome
-        System.out.println("\nBusca produto por nome: " + nomeProduto);
+        //Utilizando método que realiza a Busca do produto por nome
+        System.out.println("\nUtilizando método que realiza a Busca do produto por nome: " + nomeProduto);
         System.out.println(livraria.buscarProduto(nomeProduto));
 
-        //Busca produto por id e TipoProduto
+        //Utilizando método que realiza a Busca do produto por id e TipoProduto
         idProduto = 20;
-        System.out.println("\nBusca produto por id e TipoProduto: " + idProduto + " - " + TipoProduto.JOGO);
+        System.out.println("\nUtilizando método que realiza a Busca do produto por id e TipoProduto: " +
+                idProduto + " - " + TipoProduto.JOGO);
         System.out.println(livraria.buscarProduto(idProduto, TipoProduto.JOGO));
 
-        //Busca produto por nome e TipoProduto
+        //Utilizando método que realiza a Busca do produto por nome e TipoProduto
         nomeProduto = "Carrinho Hot Wheels";
-        System.out.println("\nBusca produto por nome e TipoProduto: " + nomeProduto + " - " + TipoProduto.BRINQUEDO);
+        System.out.println("\nUtilizando método que realiza a Busca do produto por nome e TipoProduto: " +
+                nomeProduto + " - " + TipoProduto.BRINQUEDO);
         System.out.println(livraria.buscarProduto(nomeProduto, TipoProduto.BRINQUEDO));
 
         //Variável produto recebe a referência, portanto qualquer alteração nos dados é refletida no produto do estoque
@@ -121,7 +126,9 @@ public class Sistema {
         System.out.println("\nListando itens por categoria de Produto: " + TipoProduto.FILME);
         livraria.listarItensEstoque(TipoProduto.FILME);
 
+        //**************** MANIPULAÇÃO DOS PRODUTOS NO CARRINHO DE COMPRAS ****************
         //Adiconando produtos ao carrinho de compras
+        System.out.println("\nManipulando os itens no Carrinho de Compras...");
         nomeProduto = "Carrinho Hot Wheels";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
@@ -135,11 +142,13 @@ public class Sistema {
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 8;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
+                "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
         quantidade = 2;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
+                "\" no carrinho... desconto : 15% para valor maior ou igual a R$ 200,00");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
@@ -148,6 +157,8 @@ public class Sistema {
         livraria.removerProdutoCarrinho(produto, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
+        //Produto destinado ao público maior de 18 anos
+        //Caso o comprador tenha idade inferior a 18 anos, a inclusão no carrinho não será efetuada
         quantidade = 4;
         nomeProduto = "The Last of Us Part II";
         produto = livraria.buscarProduto(nomeProduto);
@@ -159,7 +170,7 @@ public class Sistema {
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
         System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
-                "\" no carrinho... desconto : 15%");
+                "\" no carrinho... desconto : 15% para valor maior ou igual a R$ 200,00");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
@@ -167,43 +178,50 @@ public class Sistema {
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 3;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+                "\" do carrinho... Perdeu o desconto");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 8;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+                "\" do carrinho... Tentando excluir quantidade maior que possui no carrinho");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 7;
-        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto +
+                "\" do carrinho... Excluindo a quantidade total do carrinho, produto retirado do carrinho");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
-        //Aumentando o valor total de livros para pegar porcentagem de desconto maior: 20%
+        //Aumentando o valor total de livros para pegar porcentagem de desconto maior
+        //Se valor maior ou igual a R$ 200,00 - Desconto: 15%
+        //Se valor maior ou igual a R$ 300,00 - Desconto: 20%
+        //Descontos cadastrados apenas para a categoria Livro
+        //Sempre atribui o maior percentual de desconto conforme o valor total dos itens da categoria
         nomeProduto = "O Senhor dos Anéis";
         produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
         System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
-                "\" no carrinho... desconto : 15%");
+                "\" no carrinho... desconto : 15% para valor maior ou igual a R$ 200,00");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         nomeProduto = "Harry Potter e a Pedra Filosofal";
         produto = livraria.buscarProduto(nomeProduto);
-        quantidade = 10;
+        quantidade = 5;
         System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
-                "\" no carrinho... desconto maior: 20%");
+                "\" no carrinho... desconto maior: 20% para valor maior ou igual a R$ 300,00");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         //Processo de finalização da Compra
         System.out.println("\nFinalizando a compra:");
         caixa.adicionarDinheiro(livraria.comprarProdutosCarrinho(carrinhoCompra));
-        System.out.printf("Valor em Caixa: %.2f\n", caixa.getSaldo());
+        System.out.printf("Valor em Caixa: R$%.2f\n", caixa.getSaldo());
 
         //Listar todos os itens dos Estoques
         System.out.println("\nListando todo o estoque depois da compra finalizada:");

@@ -121,7 +121,10 @@ public class LivrariaServiceImplement  implements LivrariaService {
     @Override
     public void adicionarProdutoCarrinho(Produto produto, int quantidade, CarrinhoCompra carrinhoCompra) {
         if (produto.isPublicoAdulto() && !carrinhoCompra.getCLIENTE().isMaiorDeIdade()) {
-            System.out.println("Este Produto tem venda permitida apenas para maiores de 18 anos");
+            System.out.println(carrinhoCompra.getCLIENTE().getNome() + ", você tem apenas " +
+                            carrinhoCompra.getCLIENTE().calcularIdade() +
+                            " anos de idade e este produto tem venda permitida apenas para maiores de 18 anos");
+            System.out.println("Item não incluído em seu carrinho");
             return;
         }
         int quantidadeCarrinho = carrinhoCompraService.buscarQuantidadeItemCarrinho(produto, carrinhoCompra);
@@ -130,8 +133,8 @@ public class LivrariaServiceImplement  implements LivrariaService {
             carrinhoCompraService.adicionarProduto(produto, quantidade, carrinhoCompra);
         } else {
             System.out.println("Não há a quantidade total solicitada em estoque para adicionar ao carrinho de compras.");
-            System.out.println("Restam " + quantidadeEstoque +
-                    " unidades que podem ser adicionadas ao carrinho de compras.");
+            System.out.println("Resta(m) " + quantidadeEstoque +
+                    " unidade(s) que pode(m) ser adicionada(s) ao carrinho de compras.");
         }
     }
 

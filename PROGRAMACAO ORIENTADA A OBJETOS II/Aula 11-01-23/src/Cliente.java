@@ -30,7 +30,7 @@ public class Cliente {
         return idade.getYears() >= 18;
     }
 
-    private int calcularIdade() {
+    public int calcularIdade() {
         LocalDate dataAtual = LocalDate.now();
         Period idade = Period.between(dataNascimento, dataAtual);
         return idade.getYears();

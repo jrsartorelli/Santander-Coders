@@ -39,7 +39,7 @@ public class Sistema {
                 "Castle Rock Entertainment", new String[] {"Frank Darabont"}, new String[]{"Drama", "Crime"} , new String[]{"Niki Marvin"}));
         estoqueJogo.adicionarProduto(new Jogo("God of War", 20, 199.99, 10, true,
                 "Sony", "Ação-Aventura", "Santa Monica Studio"));
-        estoqueJogo.adicionarProduto(new Jogo("The Last of Us Part II", 21, 259.99, 15, true,
+        estoqueJogo.adicionarProduto(new Jogo("The Last of Us Part II", 21, 249.99, 15, true,
                 "Sony", "Ação-Aventura", "Naughty Dog"));
         estoqueBrinquedo.adicionarProduto(new Brinquedo("Boneca Barbie", 30, 49.99, 20, false, "Bonecas"));
         estoqueBrinquedo.adicionarProduto(new Brinquedo("Carrinho Hot Wheels", 31, 29.99, 15, false, "Veículos"));
@@ -123,23 +123,23 @@ public class Sistema {
 
         //Adiconando produtos ao carrinho de compras
         nomeProduto = "Carrinho Hot Wheels";
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.BRINQUEDO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
         quantidade = 6;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
         nomeProduto = "O Senhor dos Anéis";
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 8;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
         quantidade = 2;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
@@ -148,46 +148,54 @@ public class Sistema {
         livraria.removerProdutoCarrinho(produto, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
-        quantidade = 5;
+        quantidade = 4;
         nomeProduto = "The Last of Us Part II";
         produto = livraria.buscarProduto(nomeProduto);
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         nomeProduto = "O Senhor dos Anéis";
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 10;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto + " no carrinho...");
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto + "\" no carrinho...");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         //Removendo Item do carrinho
         nomeProduto = "O Senhor dos Anéis";
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 3;
-        System.out.println("\nRemovendo " + quantidade + " do produto " + nomeProduto + " do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 8;
-        System.out.println("\nRemovendo " + quantidade + " do produto " + nomeProduto + " do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
+        produto = livraria.buscarProduto(nomeProduto);
         quantidade = 7;
-        System.out.println("\nRemovendo " + quantidade + " do produto " + nomeProduto + " do carrinho...");
+        System.out.println("\nRemovendo " + quantidade + " do produto \"" + nomeProduto + "\" do carrinho...");
         livraria.removerProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 
         //Aumentando o valor total de livros para pegar porcentagem de desconto maior: 20%
         nomeProduto = "O Senhor dos Anéis";
-        produto = livraria.buscarProduto(nomeProduto, TipoProduto.LIVRO);
-        quantidade = 15;
-        System.out.println("\nAdicionando " + quantidade + " itens do produto " + nomeProduto +
-                " no carrinho... desconto maior: 20%");
+        produto = livraria.buscarProduto(nomeProduto);
+        quantidade = 10;
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
+                "\" no carrinho... desconto : 15%");
+        livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
+        livraria.listarItensCarrinho(carrinhoCompra);
+
+        nomeProduto = "Harry Potter e a Pedra Filosofal";
+        produto = livraria.buscarProduto(nomeProduto);
+        quantidade = 10;
+        System.out.println("\nAdicionando " + quantidade + " itens do produto \"" + nomeProduto +
+                "\" no carrinho... desconto maior: 20%");
         livraria.adicionarProdutoCarrinho(produto, quantidade, carrinhoCompra);
         livraria.listarItensCarrinho(carrinhoCompra);
 

@@ -10,6 +10,9 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
             ItemCarrinho itemCarrinho = carrinhoCompra.buscarItemCarrinho(produto);
             if (itemCarrinho != null) {
                 itemCarrinho.setQuantidade(itemCarrinho.getQuantidade() + quantidade);
+            } else {
+                itemCarrinho = new ItemCarrinho(produto, quantidade);
+                listaItensCarrinho.add(itemCarrinho);
             }
         } else {
             listaItensCarrinho = new ArrayList<>();
@@ -60,9 +63,12 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
     public void listarItensCarrinho(CarrinhoCompra carrinhoCompra) {
         carrinhoCompra.getListaProdutosCarrinho().values().forEach(System.out::println);
         for (TipoProduto tipoProduto : carrinhoCompra.getValoresDescontosCategoria().keySet()) {
-            System.out.printf("Desconto por Categoria - %s = R$%.2f\n", tipoProduto.toString(), carrinhoCompra.getValoresDescontosCategoria().get(tipoProduto));
+            System.out.printf("Desconto por Categoria - %s = R$%.2f\n", tipoProduto.toString(),
+                    carrinhoCompra.getValoresDescontosCategoria().get(tipoProduto));
         }
-        System.out.printf("Valor total dos itens no Carrinho: R$%.2f\n", carrinhoCompra.getValorTotal());
+        System.out.printf("Valor total dos itens no Carrinho: R$%.2f\n", calcularValorTotalCarrinhoSemDesconto(carrinhoCompra));
+        System.out.printf("Valor total do(s) Desconto(s): R$%.2f\n", calcularDescontoTotalCarrinho(carrinhoCompra));
+                System.out.printf("Valor total da Compra: R$%.2f\n", carrinhoCompra.getValorTotal());
     }
 
     @Override
@@ -101,6 +107,10 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
         return maiorDesconto;
     }
 
+    public double calcularDescontoTotalCarrinho(CarrinhoCompra carrinhoCompra){
+        return calcularValorTotalCarrinhoSemDesconto(carrinhoCompra) - carrinhoCompra.getValorTotal();
+    }
+
     public void atualizarValorCarrinho(CarrinhoCompra carrinhoCompra){
         double valorTotal = 0;
         TipoProduto tipoProduto = null;
@@ -126,6 +136,14 @@ public class CarrinhoCompraServiceImplement implements CarrinhoCompraService {
             }
         }
         return valorTotalCategoria;
+    }
+
+    public double calcularValorTotalCarrinhoSemDesconto(CarrinhoCompra carrinhoCompra) {
+        double valorTotalCarrinhoSemDesconto = 0;
+        for (TipoProduto tipoProduto : carrinhoCompra.getListaProdutosCarrinho().keySet()) {
+            valorTotalCarrinhoSemDesconto += calcularValorCarrinhoCategoriaSemDesconto(tipoProduto, carrinhoCompra);
+        }
+        return valorTotalCarrinhoSemDesconto;
     }
 
     public void atualizarValorDescontoCategoria(TipoProduto tipoProduto, CarrinhoCompra carrinhoCompra) {

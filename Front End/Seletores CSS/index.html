@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Propriedades CSS selectors</title>
+	<style>
+		input[type="checkbox"]:checked + label {
+			background-color: green;
+			color: white;
+		}
+		li:first-child {
+			font-weight: bold;
+		}
+		input:focus {
+			border: 2px solid blue;
+		}
+		a:hover {
+			color: red;
+		}
+		input::placeholder {
+			color: gray;
+		}
+		input:read-only {
+			background-color: lightgray;
+		}
+		::selection {
+			background-color: rgb(123, 255, 0);
+			color: white;
+		}
+		a:visited {
+			color: purple;
+		}
+		input:valid {
+			border: 2px solid green;
+		}
+        a[href="https://www.google.com"] {
+            color: red;
+        }
+	</style>
+</head>
+<body>
+	<h1>Propriedades CSS selectors</h1>
+	<form>
+		<label for="check">Checkbox:</label>
+		<input type="checkbox" id="check">
+		<label for="text">Texto a ser alterado a cor da fonte e cor de fundo quando selecionado o checkbox</label><br>
+		<input type="text" id="text" placeholder="Texto preenchido por padrão, usado como instrução ao usuário"><br>
+		<label for="readonly">Texto para apenas leitura</label><br>
+		<input type="text" id="readonly" readonly value="Valor somente de leitura"><br>
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+		<a href="#">Link</a>
+        <p>
+            <a href="https://www.exemplo.com">Link para o site "Exemplo"</a><br>
+            <a href="https://www.google.com">Link para o site "Google"</a>
+          </p>
+	</form>
+</body>
+</html>

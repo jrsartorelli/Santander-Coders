@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulário</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <h1>Formulário de Cliente</h1>
+    <form id="myForm">
+        <label for="nameInput">Nome:</label>
+        <input type="text" id="nameInput" required>
+        <label for="emailInput">E-mail:</label>
+        <input type="email" id="emailInput" required>
+        <label for="ageInput">Idade:</label>
+        <input type="number" id="ageInput" required>
+        <label for="passwordInput">Senha:</label>
+        <input type="password" id="passwordInput" required>
+        <button type="submit">Enviar</button>
+        <button type="reset" onclick="limparDados()">Limpar</button>
+    </form>
+    <div id="feedback"></div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

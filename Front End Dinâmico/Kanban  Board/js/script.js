@@ -326,7 +326,18 @@ function createCardFromState(cardState) {
     });
 
     cancelButton.addEventListener("click", () => {
-        card.remove();
+        if (card.getAttribute("data-new") === "true") {
+            card.remove();
+        } else {
+            titleInput.style.display = "none";
+            contentInput.style.display = "none";
+            titleLabel.style.display = "";
+            contentLabel.style.display = "";
+            saveButton.style.display = "none";
+            cancelButton.style.display = "none";
+            editButton.style.display = "";
+            deleteButton.style.display = "";
+        }
         addCardBtn.disabled = false;
     });
 

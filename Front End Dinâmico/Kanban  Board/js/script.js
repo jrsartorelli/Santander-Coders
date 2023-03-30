@@ -112,6 +112,7 @@ function createNewCard() {
 }
 
 const columns = document.querySelectorAll(".kanban-column");
+
 columns.forEach(column => {
     column.addEventListener("dragover", (event) => {
         event.preventDefault();

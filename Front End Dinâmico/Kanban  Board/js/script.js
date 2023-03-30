@@ -85,7 +85,7 @@ function createNewCard() {
     });
 
     cancelButton.addEventListener("click", () => {
-        if (card.getAttribute("data-new") === "true") {
+        if (titleLabel.textContent === "" && contentLabel.textContent === "") {
             card.remove();
         } else {
             titleInput.style.display = "none";

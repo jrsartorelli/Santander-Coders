@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Automacao Selenium" />
+        <module name="AutomacaoSelenium" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Automacao Selenium" target="17" />
+      <module name="AutomacaoSelenium" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

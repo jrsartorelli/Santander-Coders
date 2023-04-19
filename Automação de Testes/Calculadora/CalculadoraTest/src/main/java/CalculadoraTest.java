@@ -53,7 +53,7 @@ public class CalculadoraTest {
 
     @AfterAll
     public static void afterAll() {
-        //driver.quit();
+        driver.quit();
     }
 
     @Test

@@ -6,6 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CadastroCandidadosTest {
 
@@ -25,21 +30,59 @@ public class CadastroCandidadosTest {
 
     @AfterAll
     public static void afterAll() {
-        //driver.quit();
+        driver.quit();
     }
 
     @Test
-    public void registro1() {
-        WebElement campoTexto = driver.findElement(By.id("campoTexto"));
-        campoTexto.sendKeys("Maria");
+    public void criarRegistro1Test() {
+        WebElement inputNome = driver.findElement(By.id("nome"));
+        WebElement inputSobrenome = driver.findElement(By.id("sobrenome"));
+        WebElement radioMasculino = driver.findElement(By.id("masculino"));
+        WebElement radioFeminino = driver.findElement(By.id("feminino"));
+        WebElement radioOutro = driver.findElement(By.id("outro"));
+        WebElement checkboxJava = driver.findElement(By.id("java"));
+        WebElement checkboxSelenium = driver.findElement(By.id("selenium"));
+        WebElement checkboxJunit = driver.findElement(By.id("junit"));
+        WebElement checkboxJavaScript = driver.findElement(By.id("javascript"));
+        WebElement elementSelectMultipleAreaInteresse = driver.findElement(By.id("area-interesse"));
+        Select selectMultipleAreaInteresse = new Select(elementSelectMultipleAreaInteresse);
+        WebElement elementSelectMotivacao = driver.findElement(By.id("motivacao"));
+        Select SelectMotivacao = new Select(elementSelectMotivacao);
+        WebElement textAreaPorque = driver.findElement(By.id("porque"));
+        WebElement botaoEnviar = driver.findElement(By.xpath("//*[@id=\"formulario\"]/div[8]/button[2]"));
 
-        WebElement campoSenha = driver.findElement(By.id("campoSenha"));
-        campoSenha.sendKeys("1234abcd");
+        inputNome.sendKeys("Maria");
+        inputSobrenome.sendKeys("Silva");
+        radioFeminino.click();
+        checkboxJava.click();
+        checkboxJavaScript.click();
+        selectMultipleAreaInteresse.selectByVisibleText("Backend");
+        selectMultipleAreaInteresse.selectByVisibleText("Testes");
+        SelectMotivacao.selectByValue("Testes");
+        textAreaPorque.sendKeys("Combina com meu perfil");
 
-        WebElement campoNumero = driver.findElement(By.id("campoNumero"));
-        campoNumero.sendKeys("1234567890");
+        assertEquals("Maria", inputNome.getAttribute("value"));
+        assertEquals("Silva", inputSobrenome.getAttribute("value"));
+        assertFalse(radioMasculino.isSelected());
+        assertTrue(radioFeminino.isSelected());
+        assertFalse(radioOutro.isSelected());
+        assertTrue(checkboxJava.isSelected());
+        assertFalse(checkboxSelenium.isSelected());
+        assertFalse(checkboxJunit.isSelected());
+        assertTrue(checkboxJavaScript.isSelected());
+        List<WebElement> selectedOptions = selectMultipleAreaInteresse.getAllSelectedOptions();
+        List<String> selectedValues  = selectedOptions.stream().map(WebElement::getText).toList();
+        String[] valoresEsperados = {"Backend", "Testes"};
+        assertArrayEquals(valoresEsperados, selectedValues.toArray());
+        assertEquals("Testes", SelectMotivacao.getFirstSelectedOption().getText());
+        assertEquals("Combina mais com meu perfil", textAreaPorque.getAttribute("value"));
 
-        WebElement campoTextoLongo = driver.findElement(By.id("campoTextoLongo"));
-        campoTextoLongo.sendKeys("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
+        botaoEnviar.click();
+
+        driver.switchTo().alert().accept();
+
+        WebElement elementRegistro = driver.findElement(By.id("table-cadastros-body"));
+
+        assertEquals("Maria Silva feminino Backend, Testes Testes", elementRegistro.getText());
     }
 }

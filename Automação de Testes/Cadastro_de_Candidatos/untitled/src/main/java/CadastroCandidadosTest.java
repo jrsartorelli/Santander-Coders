@@ -75,7 +75,7 @@ public class CadastroCandidadosTest {
         String[] valoresEsperados = {"Backend", "Testes"};
         assertArrayEquals(valoresEsperados, selectedValues.toArray());
         assertEquals("Testes", SelectMotivacao.getFirstSelectedOption().getText());
-        assertEquals("Combina mais com meu perfil", textAreaPorque.getAttribute("value"));
+        assertEquals("Combina com meu perfil", textAreaPorque.getAttribute("value"));
 
         botaoEnviar.click();
 

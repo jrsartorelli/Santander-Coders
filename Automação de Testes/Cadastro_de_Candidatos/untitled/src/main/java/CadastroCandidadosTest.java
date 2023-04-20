@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,7 +80,11 @@ public class CadastroCandidadosTest {
 
         botaoEnviar.click();
 
-        driver.switchTo().alert().accept();
+        Alert alert = driver.switchTo().alert();
+
+        assertEquals("Você preencheu tudo corretamente e é sua última resposta?", alert.getText());
+
+        alert.accept();
 
         WebElement elementRegistro = driver.findElement(By.id("table-cadastros-body"));
 
